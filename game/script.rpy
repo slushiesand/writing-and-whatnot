@@ -1,18 +1,17 @@
 ﻿
+init python:
+    import random
+
+    #i think i'll need a function later so this will be here until i implement it
+
 define c = Character("???", color = "#cb7be1")
 define s = Character("Friend", color = "#ff0000")
-define y = Character("([you]")
-define z = Character("placeholder")
 
 image black = "#000"
 
 define audio.crumple = "zapsplat_foley_paper_bags_pile_scrunched_push_down_compress_squash_001_113503.mp3"
 define audio.conDistress = "zapsplat_household_alarm_clock_old_fashioned_ring_very_short_44062.mp3"
 define audio.staDistress = "zapsplat_impact_hard_rock_hit_metal_and_glass_crash_smash_break_008_108027.mp3"
-
-$ banNames = ["Eiax", "Aelred", "Kazan", "Eilhart", "Fuca", "Olivia", "Monochrome", "B1nary", "Mr. Script", "Beatrice", "Moth", "Ceiling"]
-# every name used in a past game of mine, excluding "King" and "Queen" since they are: 1. Common words and 2. Not their real names.
-# "To the Ceiling!!"" isn't canon to any of my other games, but since this is more of a "4th wall breaking story," he should probably also be in this list. he isn't my original character anyway!
 
 label start:
 
@@ -22,7 +21,7 @@ label start:
     c "..."
     play sound crumple volume 0.4
     show cg far2
-    c "... No, not good enough. {w=1}Scrap!"
+    c "... No, not good enough. {w=1}{i}Scrap!{/i}"
     c "What does the story have to do with the wider narrative? What's the message I want people to take away?"
 
     show cg close1
@@ -35,7 +34,7 @@ label start:
     with vpunch
     stop music
     play sound conDistress volume 0.5
-    c "?!?"
+    c "{i}?!?{/i}"
     scene bg hill
     with dissolve
     s "Look up, {color=#cb7be1}o' Conductor{/color} of this realm. Your ideas fly like cranes."
@@ -99,9 +98,62 @@ label start:
 
     """
     #just realized i'll have to seperate this when i add in the poses DANG IT\
-    
     $ s = Character("Stagehand", color="#ff0000")
     #sitting sfx
     s "... If you insist."
+
+    show con placeholder at left
+    show sta placeholder at right
+    with dissolve
+    s "So..."
+    python:
+            banNames = ["Eiax", "Aelred", "Kazan", "Eilhart", "Fuca", "Olivia", "Monochrome", "B1nary", "Mr. Script", "Beatrice", "Moth", "Ceiling"]
+            # every name used in a past game of mine, excluding "King" and "Queen" since they are: 1. Common words and 2. Not their real names.
+            # "To the Ceiling!!" isn't canon to any of my other games, but since this is more of a "4th wall breaking story," he should probably also be in this list. he isn't my original character anyway!
+            special = ["Stagehand", "Conductor", "Ampersand", "Slushie"]
+
+            you = None
+            while you == None or not you or you in banNames or you in special:
+                you = renpy.input("What is your character's name?")
+                you = you.strip().title()
+                y = Character(you, color="#fff")
+
+                if not you:
+                    s ("I implore you to try to think of something.")
+                elif you in banNames:
+                    s ("Hey now. Originality, remember?")
+                elif you in special:
+                    s ("Ah...{w=1} you want to tell {i}that{/i} story? So near and dear to your heart?")
+                    s ("Well, I'm afraid we have no time to implement such things, at least not now, {color=#cb7be1}dreamer.{/color}")
+    
+    s "[you]... a typical naming scheme. Not to say that is a bad thing."
+    menu:
+        s "What kind of character would this \"[you]\" be?"
+
+        "A violin-ing college student, looking to fill their heart.":
+            jump romance
+
+        "A middle-aged coporate slave whose veins pulse with sorrow.":
+            jump tragedy
+
+        "The alley-dweller whose mind wavers between contempt and absurdity.":
+            jump edgy
+
+        "It doesn't matter who I am. I am the inane and the egoist!":
+            jump comedy
+
+    label romance:
+        s "Ah... If that's the character you wish to write."
+
+    label tragedy:
+        s "Tell me more. Though, I suppose that's what the rest of the story is."
+
+    label edgy:
+        s "What would one choose, when in such a position?"
+
+    label comedy:
+        s "Hahaha. Having fun, are we?"
+    
+
 
     return
