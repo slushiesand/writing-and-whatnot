@@ -4,44 +4,58 @@ define s = Character("Friend", color = "#ff0000")
 define y = Character("([you]")
 define z = Character("placeholder")
 
-banNames = ["Eiax", "Aelred", "Kazan", "Eilhart", "Fuca", "Olivia", "Monochrome", "B1nary", "Mr. Script", "Beatrice", "Moth", "Ceiling"]
+image black = "#000"
+
+define audio.crumple = "zapsplat_foley_paper_bags_pile_scrunched_push_down_compress_squash_001_113503.mp3"
+define audio.conDistress = "zapsplat_household_alarm_clock_old_fashioned_ring_very_short_44062.mp3"
+define audio.staDistress = "zapsplat_impact_hard_rock_hit_metal_and_glass_crash_smash_break_008_108027.mp3"
+
+$ banNames = ["Eiax", "Aelred", "Kazan", "Eilhart", "Fuca", "Olivia", "Monochrome", "B1nary", "Mr. Script", "Beatrice", "Moth", "Ceiling"]
 # every name used in a past game of mine, excluding "King" and "Queen" since they are: 1. Common words and 2. Not their real names.
 # "To the Ceiling!!"" isn't canon to any of my other games, but since this is more of a "4th wall breaking story," he should probably also be in this list. he isn't my original character anyway!
 
 label start:
 
-    scene cg far
-    with fade
-    #ticktock (music), writing noise
-
+    scene cg far1
+    with Fade(1.0, 0, 1.0)
+    play music master_of_dreams_clock_ticking_337
     c "..."
-    #crumple
+    play sound crumple volume 0.4
+    show cg far2
     c "... No, not good enough. {w=1}Scrap!"
     c "What does the story have to do with the wider narrative? What's the message I want people to take away?"
 
-    show cg close 
+    show cg close1
+    with dissolve
     c "Think, brain. Think!"
-    show cg stagehand1
-    #footstep
+    show cg close2
+    play sound zapsplat_foley_footstep_shoe_sandal_single_scrape_wipe_grass_001_101428 volume 0.4
     s "Haven't you done enough thinking?"
-    show cg stagehand2
-    #chime sfx. stop ticks
+    show cg close2
+    with vpunch
+    stop music
+    play sound conDistress volume 0.5
     c "?!?"
+    scene bg hill
+    with dissolve
     s "Look up, {color=#cb7be1}o' Conductor{/color} of this realm. Your ideas fly like cranes."
+    show cg close2
+    with dissolve
     s "... & they're getting {i}very{/i} annoying to avoid."
     $ c = Character("Conductor", color="#cb7be1")
-    c "Haah... Well, stories don't write themselves, you know?"
-    c "Someone's gotta write them, but that someone doesn't have a lick of imagination right now."
 
     scene bg hill 
-    show con neu at left
-    show sta neu at right
+    show con placeholder at left
+    show sta placeholder at right
     with dissolve
     #for now these will be reg sprites, but in the future, they'll be live2d
+    c "Haah... Well, stories don't write themselves, you know?"
+    c "Someone's gotta write them, but that someone doesn't have a lick of imagination right now."
     s "What is it you're trying to write, anywho?"
     c "Oh! Well, there's a lot I want to write!"
     c "There's this young-looking man who gets snowed in a cabin, but he's actually, like, 700 years old!{nw=.5}"
     c "And this shut-in whose social life consists of artifical intelligences, and--{nw=.5}"
+    play sound staDistress volume 0.4
     s "Apologies. Forget I asked."
     s "In any case, you clearly haven't gotten very far in your writings."
     c """
@@ -50,7 +64,7 @@ label start:
 
     None of the words come out right. It's all... {w=1}{i}out of character.{/i}
 
-    These people I try to write... They're flatter and more cliche on the paper than in my head, and I can't stand it!
+    These people I try to write-- They're flatter and more cliche on the paper than in my head, and I can't stand it!
 
     I know the hallmarks of bad writing, and I've read the copy-paste material from copy-paste authors.
 
@@ -61,7 +75,7 @@ label start:
     """
 
     s "{i}Why{/i} do you aim to make a masterpiece?"
-    c "Shouldn't it be obvious? {color=#ff0000}You've{/color} been with me forever."
+    c "Shouldn't it be obvious? {w=1}You've been with me forever."
     c "... {w=1}I want to make something meaningful."
     s "In that case, why don't you take a break and write something new?"
     s "It doesn't have to be fancy, nor something perfect."
