@@ -18,7 +18,7 @@ label start:
     with Fade(1.0, 0, 1.0)
     play music master_of_dreams_clock_ticking_337
     c "..."
-    play sound crumple volume 0.4
+    play sound crumple
     show cg far2
     c "... No, not good enough. {w=1}{i}Scrap!{/i}"
     c "What does the story have to do with the wider narrative? What's the message I want people to take away?"
@@ -27,12 +27,12 @@ label start:
     with dissolve
     c "Think, brain. Think!"
     show cg close2
-    play sound zapsplat_foley_footstep_shoe_sandal_single_scrape_wipe_grass_001_101428 volume 0.4
+    play sound zapsplat_foley_footstep_shoe_sandal_single_scrape_wipe_grass_001_101428
     s "Haven't you done enough thinking?"
     show cg close2
     with vpunch
     stop music
-    play sound conDistress volume 0.5
+    play sound conDistress
     c "{i}?!?{/i}"
     scene bg hill
     with dissolve
@@ -53,7 +53,7 @@ label start:
     c "Oh! Well, there's a lot I want to write!"
     c "There's this young-looking man who gets snowed in a cabin, but he's actually, like, 700 years old!{nw=.5}"
     c "And this shut-in whose social life consists of artifical intelligences, and--{nw=.5}"
-    play sound staDistress volume 0.4
+    play sound staDistress
     s "Apologies. Forget I asked."
     s "In any case, you clearly haven't gotten very far in your writings."
     c """
@@ -79,11 +79,15 @@ label start:
     s "It doesn't have to be fancy, nor something perfect."
     s "Just make something you're proud of. That will give you the \"meaning\" you've been searching for."
 
-    scene bg paper
+    scene bg hill
     with dissolve
-    #crumple
+    play sound crumple
+    show paper
+    with easeinbottom
     c "Ah, but I've never been good at making new ideas either..."
     c "Maybe you can help me write?"
+    show sta placeholder at right
+    with easeinright
     s "Me? I'm not a creative individual, I'm afraid."
     c """
 
@@ -102,8 +106,7 @@ label start:
     s "... If you insist."
 
     show con placeholder at left
-    show sta placeholder at right
-    with dissolve
+    with easeinleft
     s "So..."
     python:
             banNames = ["Eiax", "Aelred", "Kazan", "Eilhart", "Fuca", "Olivia", "Monochrome", "B1nary", "Mr. Script", "Beatrice", "Moth", "Ceiling"]
