@@ -1,0 +1,181 @@
+{
+	"Version": 3,
+	"Parameters": [
+		{
+			"Id": "ParamAngleY",
+			"GroupId": "",
+			"Name": "Angle Y"
+		},
+		{
+			"Id": "ParamAngleZ",
+			"GroupId": "",
+			"Name": "Angle Z"
+		},
+		{
+			"Id": "ParamEyeROpen",
+			"GroupId": "",
+			"Name": "EyeR Open"
+		},
+		{
+			"Id": "Param",
+			"GroupId": "",
+			"Name": "Angle Y Physics"
+		},
+		{
+			"Id": "Param3",
+			"GroupId": "",
+			"Name": "Angle Z Physics"
+		},
+		{
+			"Id": "ParamEyeBallX",
+			"GroupId": "",
+			"Name": "Eyeball X"
+		},
+		{
+			"Id": "ParamEyeBallY",
+			"GroupId": "",
+			"Name": "Eyeball Y"
+		},
+		{
+			"Id": "ParamMouthForm",
+			"GroupId": "",
+			"Name": "Mouth Form"
+		},
+		{
+			"Id": "ParamMouthOpenY",
+			"GroupId": "",
+			"Name": "Mouth Open"
+		},
+		{
+			"Id": "ParamBodyAngleZ",
+			"GroupId": "",
+			"Name": "Body Z"
+		},
+		{
+			"Id": "ParamBreath",
+			"GroupId": "",
+			"Name": "Breath"
+		},
+		{
+			"Id": "Param4",
+			"GroupId": "",
+			"Name": "Gear Rotation"
+		},
+		{
+			"Id": "Param2",
+			"GroupId": "",
+			"Name": "Bounce Y"
+		},
+		{
+			"Id": "Param8",
+			"GroupId": "",
+			"Name": "z1"
+		},
+		{
+			"Id": "Param9",
+			"GroupId": "",
+			"Name": "z2"
+		},
+		{
+			"Id": "Param5",
+			"GroupId": "",
+			"Name": "Upset Expression"
+		},
+		{
+			"Id": "Param6",
+			"GroupId": "",
+			"Name": "Crying Expression"
+		},
+		{
+			"Id": "Param7",
+			"GroupId": "",
+			"Name": "Arm Up Expressoin"
+		},
+		{
+			"Id": "Param10",
+			"GroupId": "",
+			"Name": "Question Expression"
+		}
+	],
+	"ParameterGroups": [],
+	"Parts": [
+		{
+			"Id": "Part",
+			"Name": "Full Body"
+		},
+		{
+			"Id": "Part4",
+			"Name": "head"
+		},
+		{
+			"Id": "Part5",
+			"Name": "body"
+		},
+		{
+			"Id": "face",
+			"Name": "face"
+		},
+		{
+			"Id": "bangs",
+			"Name": "bangs"
+		},
+		{
+			"Id": "Part6",
+			"Name": "mouth"
+		},
+		{
+			"Id": "Part3",
+			"Name": "bottom-hair"
+		},
+		{
+			"Id": "Larm",
+			"Name": "Larm"
+		},
+		{
+			"Id": "Rarm",
+			"Name": "Rarm"
+		},
+		{
+			"Id": "eye",
+			"Name": "eye"
+		},
+		{
+			"Id": "clock",
+			"Name": "clock"
+		},
+		{
+			"Id": "Lhand",
+			"Name": "Lhand"
+		},
+		{
+			"Id": "Rhand",
+			"Name": "Rhand"
+		},
+		{
+			"Id": "Part2",
+			"Name": "clock-hands"
+		},
+		{
+			"Id": "Part9",
+			"Name": "Lhand1"
+		},
+		{
+			"Id": "Part10",
+			"Name": "Lhand2"
+		},
+		{
+			"Id": "Part7",
+			"Name": "Rhand1"
+		},
+		{
+			"Id": "Part8",
+			"Name": "Rhand2"
+		}
+	],
+	"CombinedParameters": [
+		[
+			"ParamMouthForm",
+			"ParamMouthOpenY"
+		]
+	]
+}

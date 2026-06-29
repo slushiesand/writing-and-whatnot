@@ -1,0 +1,38 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "stagehand.moc3",
+		"Textures": [
+			"stagehand.2048/texture_00.png"
+		],
+		"Physics": "stagehand.physics3.json",
+		"DisplayInfo": "stagehand.cdi3.json",
+		"Expressions": [
+			{
+				"Name": "neutral",
+				"File": "neutral.exp3.json"
+			},
+			{
+				"Name": "happy",
+				"File": "happy.exp3.json"
+			},
+			{
+				"Name": "smug",
+				"File": "smug.exp3.json"
+			}
+		]
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": []
+		},
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": []
+		}
+	],
+	"HitAreas": []
+}

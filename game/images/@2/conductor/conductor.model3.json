@@ -1,0 +1,38 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "conductor.moc3",
+		"Textures": [
+			"conductor.2048/texture_00.png"
+		],
+		"Physics": "conductor.physics3.json",
+		"DisplayInfo": "conductor.cdi3.json",
+		"Expressions": [
+			{
+				"Name": "neutral",
+				"File": "neutral.exp3.json"
+			},
+			{
+				"Name": "happy",
+				"File": "happy.exp3.json"
+			},
+			{
+				"Name": "distress",
+				"File": "distress.exp3.json"
+			}
+		]
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": []
+		},
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": []
+		}
+	],
+	"HitAreas": []
+}

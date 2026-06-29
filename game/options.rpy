@@ -195,6 +195,10 @@ init python:
     build.documentation('*.html')
     build.documentation('*.txt')
 
+## Allows Live2D (?)
+
+define config.gl2 = True
+
 
 ## A Google Play license key is required to perform in-app purchases. It can be
 ## found in the Google Play developer console, under "Monetize" > "Monetization

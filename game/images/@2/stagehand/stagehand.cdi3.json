@@ -1,0 +1,178 @@
+{
+	"Version": 3,
+	"Parameters": [
+		{
+			"Id": "ParamAngleY",
+			"GroupId": "",
+			"Name": "Angle Y"
+		},
+		{
+			"Id": "ParamAngleZ",
+			"GroupId": "",
+			"Name": "Angle Z"
+		},
+		{
+			"Id": "Param",
+			"GroupId": "",
+			"Name": "Angle Y Physics"
+		},
+		{
+			"Id": "Param2",
+			"GroupId": "",
+			"Name": "Angle Z Physics"
+		},
+		{
+			"Id": "ParamEyeLOpen",
+			"GroupId": "",
+			"Name": "EyeL Open"
+		},
+		{
+			"Id": "ParamEyeROpen",
+			"GroupId": "",
+			"Name": "EyeR Open"
+		},
+		{
+			"Id": "ParamEyeBallX",
+			"GroupId": "",
+			"Name": "Eyeball X"
+		},
+		{
+			"Id": "ParamEyeBallY",
+			"GroupId": "",
+			"Name": "Eyeball Y"
+		},
+		{
+			"Id": "Param10",
+			"GroupId": "",
+			"Name": "Eyeball ExtraX"
+		},
+		{
+			"Id": "Param11",
+			"GroupId": "",
+			"Name": "Eyeball ExtraY"
+		},
+		{
+			"Id": "ParamMouthForm",
+			"GroupId": "",
+			"Name": "Mouth Form"
+		},
+		{
+			"Id": "ParamMouthOpenY",
+			"GroupId": "",
+			"Name": "Mouth Open"
+		},
+		{
+			"Id": "ParamBreath",
+			"GroupId": "",
+			"Name": "Breath"
+		},
+		{
+			"Id": "Param7",
+			"GroupId": "",
+			"Name": "Bounce Y"
+		},
+		{
+			"Id": "Param8",
+			"GroupId": "",
+			"Name": "z1"
+		},
+		{
+			"Id": "Param9",
+			"GroupId": "",
+			"Name": "z2"
+		},
+		{
+			"Id": "Param3",
+			"GroupId": "",
+			"Name": "Angry Expression"
+		},
+		{
+			"Id": "Param4",
+			"GroupId": "",
+			"Name": "Larm Expressions"
+		},
+		{
+			"Id": "Param5",
+			"GroupId": "",
+			"Name": "Rarm Expressions"
+		},
+		{
+			"Id": "Param6",
+			"GroupId": "",
+			"Name": "Finger"
+		}
+	],
+	"ParameterGroups": [],
+	"Parts": [
+		{
+			"Id": "Part",
+			"Name": "Full Body"
+		},
+		{
+			"Id": "Part4",
+			"Name": "head"
+		},
+		{
+			"Id": "Part5",
+			"Name": "body"
+		},
+		{
+			"Id": "angry",
+			"Name": "angry"
+		},
+		{
+			"Id": "face",
+			"Name": "face"
+		},
+		{
+			"Id": "extra",
+			"Name": "extra"
+		},
+		{
+			"Id": "Part2",
+			"Name": "top-hair"
+		},
+		{
+			"Id": "Larm",
+			"Name": "Larm"
+		},
+		{
+			"Id": "Rarm",
+			"Name": "Rarm"
+		},
+		{
+			"Id": "Part3",
+			"Name": "lower-hair"
+		},
+		{
+			"Id": "Leye",
+			"Name": "Leye"
+		},
+		{
+			"Id": "Reye",
+			"Name": "Reye"
+		},
+		{
+			"Id": "Lhand",
+			"Name": "Lhand"
+		},
+		{
+			"Id": "Rhand",
+			"Name": "Rhand1"
+		},
+		{
+			"Id": "Part6",
+			"Name": "Rhand2"
+		}
+	],
+	"CombinedParameters": [
+		[
+			"Param10",
+			"Param11"
+		],
+		[
+			"ParamMouthForm",
+			"ParamMouthOpenY"
+		]
+	]
+}

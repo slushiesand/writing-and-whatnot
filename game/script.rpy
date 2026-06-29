@@ -6,7 +6,10 @@ define c = Character("???", color = "#cb7be1")
 define s = Character("Friend", color = "#ff0000")
 define y = Character("[you]")
 define z = Character("placeholder")
+
 image black = "#000"
+image conductor = Live2D("images/@2/conductor", loop = True, seamless = True, default_fade = False)
+image stagehand = Live2D("images/@2/stagehand", loop = True, seamless = True)
 
 define audio.crumple = "zapsplat_foley_paper_bags_pile_scrunched_push_down_compress_squash_001_113503.mp3"
 define audio.conDistress = "zapsplat_household_alarm_clock_old_fashioned_ring_very_short_44062.mp3"
@@ -43,22 +46,33 @@ label start:
     $ c = Character("Conductor", color="#cb7be1")
 
     scene bg hill 
-    show con placeholder at left
-    show sta placeholder at right
+    show conductor idle_talk at left
+    show stagehand idle at right
     with dissolve
-    #for now these will be reg sprites, but in the future, they'll be live2d
+
     c "Haah... Well, stories don't write themselves, you know?"
     c "Someone's gotta write them, but that someone doesn't have a lick of imagination right now."
+    show conductor write_intro write
+    show stagehand idle_talk
     s "What is it you're trying to write, anywho?"
+    show conductor think_intro think_talk
+    show stagehand idle
     c "Oh! Well, there's a lot I want to write!"
     c "There's this young-looking man who gets snowed in a cabin, but he's actually, like, 700 years old!{nw=.5}"
     c "And this shut-in whose social life consists of artifical intelligences, and--{nw=.5}"
     play sound staDistress
+    show conductor idle distress 
+    show stagehand smug idle_talk 
+    with dissolve
     s "Apologies. Forget I asked."
+    show conductor neutral
+    with dissolve
     s "In any case, you clearly haven't gotten very far in your writings."
+    show conductor idle_talk
+    show stagehand idle
+    c "... {w=1}Yeah, I know. It's just..."
+    show conductor upset_intro upset_talk
     c """
-
-    ... {w=1}Yeah, I know. It's just...
 
     None of the words come out right. It's all... {w=1}{i}out of character.{/i}
 
@@ -71,10 +85,14 @@ label start:
     Why can my people only come alive in the confines of my head?
 
     """
-
+    show conductor upset
     s "{i}Why{/i} do you aim to make a masterpiece?"
+    show conductor upset_talk
     c "Shouldn't it be obvious? {w=1}You've been with me forever now."
+    show conductor idle_talk
+    with dissolve
     c "... {w=1}I want to make something meaningful."
+    show conductor idle
     s "In that case, why don't you take a break and write something new?"
     s "It doesn't have to be fancy, nor something perfect."
     s "Just make something you're proud of. That will give you the \"meaning\" you've been searching for."
