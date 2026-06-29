@@ -2,14 +2,21 @@
 init python:
     import random
 
+    names = {
+        "1": "Ai",
+        "2": "Eddie",
+        "3": "Godfrey",
+        "4": "John"
+    }
+
 define c = Character("???", color = "#cb7be1")
 define s = Character("Friend", color = "#ff0000")
 define y = Character("[you]")
 define z = Character("placeholder")
 
 image black = "#000"
-image conductor = Live2D("images/@2/conductor", loop = True, seamless = True, default_fade = False)
-image stagehand = Live2D("images/@2/stagehand", loop = True, seamless = True)
+image conductor = Live2D("images/@2/conductor", height = 0.99, loop = True, seamless = True, default_fade = False)
+image stagehand = Live2D("images/@2/stagehand", loop = True, seamless = True, default_fade = False)
 
 define audio.crumple = "zapsplat_foley_paper_bags_pile_scrunched_push_down_compress_squash_001_113503.mp3"
 define audio.conDistress = "zapsplat_household_alarm_clock_old_fashioned_ring_very_short_44062.mp3"
@@ -17,6 +24,7 @@ define audio.staDistress = "zapsplat_impact_hard_rock_hit_metal_and_glass_crash_
 
 label start:
     $ char2 = random.randint(1, 4)
+    $ char2name = names[str(char2)]
     scene cg far1
     with Fade(1.0, 0, 1.0)
     play music master_of_dreams_clock_ticking_337
@@ -86,15 +94,19 @@ label start:
 
     """
     show conductor upset
+    show stagehand idle_talk
     s "{i}Why{/i} do you aim to make a masterpiece?"
     show conductor upset_talk
+    show stagehand idle
     c "Shouldn't it be obvious? {w=1}You've been with me forever now."
     show conductor idle_talk
     with dissolve
     c "... {w=1}I want to make something meaningful."
     show conductor idle
+    show stagehand pointer_intro pointer_talk
     s "In that case, why don't you take a break and write something new?"
     s "It doesn't have to be fancy, nor something perfect."
+    show stagehand happy
     s "Just make something you're proud of. That will give you the \"meaning\" you've been searching for."
 
     scene bg hill
@@ -104,9 +116,10 @@ label start:
     with easeinbottom
     c "Ah, but I've never been good at making new ideas either..."
     c "Maybe you can help me write?"
-    show sta placeholder at right
+    show stagehand paper_intro paper_talk at right
     with easeinright
     s "Me? I'm not a creative individual, I'm afraid."
+    show stagehand paper
     c """
 
     We worked together once, as {color=#cb7be1}\"Conductor\"{/color} and {color=#ff0000}\"Stagehand\".{/color}
@@ -121,11 +134,14 @@ label start:
     #just realized i'll have to seperate this when i add in the poses DANG IT\
     $ s = Character("Stagehand", color="#ff0000")
     #sitting sfx
+    show stagehand smug paper_talk
     s "... If you insist."
 
-    show con placeholder at left
+    show conductor write_intro write at left
     with easeinleft
+    show stagehand neutral
     s "So..."
+    show stagehand paper
     python:
             banNames = ["Eiax", "Aelred", "Kazan", "Eilhart", "Fuca", "Olivia", "Monochrome", "B1nary", "Mr. Script", "Beatrice", "Moth", "Ceiling"]
             # every name used in a past game of mine, excluding "King" and "Queen" since they are: 1. Common words and 2. Not their real names.
@@ -144,21 +160,26 @@ label start:
                 elif you in special:
                     s ("Ah...{w=1} you want to tell {i}that{/i} story? So near and dear to your heart?")
                     s ("Well, I'm afraid we have no time to implement such things, at least not now, {color=#cb7be1}dreamer.{/color}")
-    
+    show stagehand paper_talk
     s "[you]... a typical naming scheme. Not to say that is a bad thing."
+    $ char1 = 0
     menu:
         s "What kind of character would this \"[you]\" be?"
 
         "A violin-ing college student, looking to fill their heart.":
+            $ char1 = 1
             jump rom
 
         "A middle-aged coporate slave whose veins pulse with sorrow.":
+            $ char1 = 2
             jump trag
 
         "The alley-dweller whose mind wavers between contempt and absurdity.":
+            $ char1 = 3
             jump ed
 
         "It doesn't matter who I am. I am the inane and the egoist!":
+            $ char1 = 4
             jump com
 
 label rom:
@@ -168,6 +189,8 @@ label rom:
     y "I can't believe it! After 3 years of {i}happiness{/i} and {i}fulfillment{/i}, they just {color=#f260ff}dumped{/color} me!"
     y "Waah... and exams are coming up too!"
     y "What am I going to do... ?"
+    show stagehand idle_talk smug
+    with dissolve
     s "Ah... If that's the character you wish to write."
 
     show black
@@ -211,19 +234,26 @@ label rom:
     else:
         jump .edic
     "BUG"
-        
 
     label rom.ance:
         s "ai"
 
+        return
+
     label rom.edy:
         s "eddie"
+
+        return
 
     label rom.gy:
         s "godfrey"
 
+        return
+
     label rom.edic:
         s "john"
+
+        return
 
     return
 
@@ -326,6 +356,61 @@ label com:
 
     return
 
+label ending:
+
+    menu:
+        c "There's only one way for this story to end."
+
+        "Bright rays shine down on morning bells...":
+            c "Adults and children alike cheer for this white day."
+
+        "Rolling clouds rain down city walls and gluttinous gutters...":
+            pass
+
+        "Alleys echo the same white noise they always did...":
+            pass
+
+        "The earth rumbles with magma and tension...":
+            pass
+        
+    show stagehand paper_talk
+    s "What meaning does a piece of writing have -- to a reader or a writer -- if it is simply \"work?\""
+    s "Art is a manifestation of flaws. Perhaps there are \"more flawed\" ways to execute a certain medium, but there are no ways to eliminate flaws."
+    show stagehand idle_talk smug
+    with dissovle
+    s "... Are you proud of what you have done today?"
+    show stagehand idle
+    show conductor write_talk
+    c "It's a bit discontinuous, but it was fun."
+    show conductor idle_talk
+    with dissolve
+    c "Maybe that, too, is valuable."
+    c "I'm proud I had fun with an old friend. How about that?"
+    show conductor idle
+    show stagehand pointer_intro pointer_talk
+    s "It's alright to admit you liked your story."
+    show stagehand pointer
+    show conductor happy idle_talk
+    c "Fine! But it's your story, too! So {i}we're{/i} proud of our collective imagination!"
+    show conductor neutral think_intro think
+    c "... {w=1}Although, aren't you also just a figment of my imagination?"
+    show stagehand idle
+    with dissolve
+    s "..."
+    show stagehand neutral idle_talk
+    s "Of course. I have come to terms with that fact since we've met."
+    s "I am and always will be \"just your imaginary friend.\""
+    show stagehand pointer_intro pointer_talk
+    s "But {color=#cb7be1}you{/color} chose to listen to me in the end. It was still {i}your{/i} choice to break {i}your{/i} curse."
+    show stagehand idle_talk
+    with dissolve
+    s "{color=#cb7be1}{i}You,{/i}{/color} the only real being in your mindscape."
+    s "Awaken, and create all the stories you like-- unburdened."
+
+    scene black
+    "???" "..."
+    "???" "I guess this light-hearted reprieve ended up meaningful after all."
+    "End: A Dream within a Dream"
 
 "HEY HOW DID YOU GET HERE"
 return
