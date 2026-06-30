@@ -527,6 +527,32 @@ label rom:
         show conductor write_talk
         c "And so, these intertwined souls separate, just for the time being."
 
+        show black
+        with dissolve
+        hide black
+        hide rom 
+        hide ance
+        show conductor write
+        show stagehand paper_talk
+        with dissolve
+
+        s "This first act certainly has some interesting threads starting."
+
+        show conductor write_talk
+        show stagehand paper
+        c "A street-corner turned into soda cupts, and a chance encounter blossomed into prolonged contact."
+        c "[you] has become quite acquainted with [char2name] after all this time. Their boyfriend is just a footnote in their mind with the help of a new friend."
+        show stagehand paper_talk
+        show conductor write
+        z "character"
+        show rom neutral at truecenter:
+            xpos 0.39
+        with easeinleft
+        show conductor write_talk
+        show stagehand paper
+        y "character"
+
+
         jump ending
 
     label rom.edy:
@@ -732,6 +758,31 @@ label rom:
         show conductor write_talk
         c "And so, these intertwined souls separate, just for the time being."
 
+        show black
+        with dissolve
+        hide black
+        hide rom 
+        hide ance
+        show conductor write
+        show stagehand paper_talk
+        with dissolve
+
+        s "This first act certainly has some interesting threads starting."
+
+        show conductor write_talk
+        show stagehand paper
+        c "A street-corner turned into soda cupts, and a chance encounter blossomed into prolonged contact."
+        c "[you] has become quite acquainted with [char2name] after all this time. Their boyfriend is just a footnote in their mind with the help of a new friend."
+        show stagehand paper_talk
+        show conductor write
+        z "character"
+        show rom neutral at truecenter:
+            xpos 0.39
+        with easeinleft
+        show conductor write_talk
+        show stagehand paper
+        y "character"
+
         jump ending
 
     label rom.gy:
@@ -911,6 +962,31 @@ label rom:
         show conductor write_talk
         c "And so, these intertwined souls separate, just for the time being."
 
+        show black
+        with dissolve
+        hide black
+        hide rom 
+        hide ance
+        show conductor write
+        show stagehand paper_talk
+        with dissolve
+
+        s "This first act certainly has some interesting threads starting."
+
+        show conductor write_talk
+        show stagehand paper
+        c "A street-corner turned into soda cupts, and a chance encounter blossomed into prolonged contact."
+        c "[you] has become quite acquainted with [char2name] after all this time. Their boyfriend is just a footnote in their mind with the help of a new friend."
+        show stagehand paper_talk
+        show conductor write
+        z "character"
+        show rom neutral at truecenter:
+            xpos 0.39
+        with easeinleft
+        show conductor write_talk
+        show stagehand paper
+        y "character"
+
         jump ending
 
     label rom.edic:
@@ -948,9 +1024,12 @@ label rom:
         show edic neutral:
             zrotate -9.0
         z "I have a Doctorate in Psychology."
-        show conductor happy write_talk
+        show conductor happy think_talk
+        with dissolve
+        show stagehand idle
         c "Not in marketing?! Oh, uhm, I mean."
-        show conductor neutral
+        show conductor neutral write_talk
+        with dissolve
         show rom excited:
             subpixel True 
             ypos 0.59 
@@ -997,8 +1076,8 @@ label rom:
         y "... Oh. Sorry for dumping this all on you."
 
         show edic bother
-        show stagehand paper_intro paper_talk
         with dissolve
+        show stagehand paper_intro paper_talk
         z "It is not your fault. The human brain is flawed with irrationality."
         show stagehand paper
 
@@ -1011,15 +1090,34 @@ label rom:
                 y "As an apology for the trauma dump, and like... getting to know each other better."
                 show conductor idle
                 show stagehand paper_talk
+                show edic bother:
+                    subpixel True 
+                    zrotate 0.0 
+                    ease_back 0.40 zrotate 9.0 
+                with Pause(0.50)
+                show edic bother:
+                    zrotate 9.0 
                 z "I'm not friends with minors."
                 show conductor idle_talk
                 show stagehand paper
-                show rom bother
-                y "... I'm a senior in college?"
+                show rom bother:
+                    subpixel True 
+                    ypos 0.5 
+                    easein_quad 0.33 ypos 0.55 
+                with Pause(0.43)
+                show rom bother:
+                    ypos 0.55 
+                y "... I'm a senior in college? I graduate in like, a month."
                 show conductor idle
                 show stagehand idle_talk
                 with dissolve
-                show edic surprised
+                show edic surprised:
+                    subpixel True 
+                    zrotate 9.0 
+                    easein_circ 0.32 zrotate 0.0 
+                with Pause(0.42)
+                show edic surprised:
+                    zrotate 0.0
                 z "Oh, sorry. Still kind of weird, but okay."
 
             "How much do you get paid?":
@@ -1034,26 +1132,60 @@ label rom:
                 z "Six figure salary."
                 show stagehand paper
                 show conductor think_intro think_talk
-                show rom surprised
+                show rom surprised:
+                    subpixel True 
+                    zrotate 0.0 
+                    ease_cubic 0.41 zrotate 18.0 
+                with Pause(0.51)
+                show rom surprised:
+                    zrotate 18.0 
                 y "As a psychology major? Who are you working for, the CIA?"
                 show conductor think
                 show stagehand smug pointer_talk
-                show edic excited
-                with dissolve
+                show edic excited:
+                    subpixel True 
+                    ypos 0.59 
+                    spring3 0.38 ypos 0.5 
+                with Pause(0.48)
+                show edic excited:
+                    ypos 0.5 
                 z "Close! The Queen of England."
+                show rom surprised:
+                    subpixel True 
+                    zrotate 18.0 
+                    ease_cubic 0.41 zrotate 0.0 
+                with Pause(0.51)
+                show rom surprised:
+                    zrotate 0.0 
 
             "What is the meaning of existence?":
                 show edic sad
+                with dissolve
                 show stagehand paper_talk
                 z "I don't know. Maybe we're not meant to know."
                 show stagehand paper
                 show conductor write_intro write_talk
                 c "That's surprisingly profound coming from a man named Jo--{nw=1}"
                 show conductor distress write
+                with dissolve
                 show stagehand smug paper_talk
+                show edic sad:
+                    subpixel True 
+                    zrotate 0.0 
+                    ease_cubic 0.44 zrotate 9.0 
+                with Pause(0.54)
+                show edic sad:
+                    zrotate 9.0
                 z "Or, like, marmalade."
                 show conductor neutral upset_intro upset_talk
                 show stagehand paper
+                show edic sad:
+                    subpixel True
+                    zrotate 9.0
+                    ease_cubic 0.44 zrotate 0.0
+                with Pause(0.54)
+                show edic sad:
+                    zrotate 0.0
                 c "... Is he Australian now?"
 
             "It says gullible on the ceiling.":
@@ -1062,9 +1194,21 @@ label rom:
                 z "No, but it says gullible below your feet."
                 show stagehand pointer
                 show conductor idle_talk
-                show rom excited
+                show rom excited:
+                    subpixel True 
+                    ypos 0.5 
+                    ease_back 0.36 ypos 0.42 
+                with Pause(0.46)
+                show rom excited:
+                    ypos 0.42
                 y "Er, really?"
-                show rom sad
+                show rom sad:
+                    subpixel True 
+                    ypos 0.42 
+                    ease2 0.53 ypos 0.5 
+                with Pause(0.63)
+                show rom sad:
+                    ypos 0.5
                 y "... No."
             
 
@@ -1085,12 +1229,46 @@ label rom:
             ypos 0.5 
         y "Please, what is your name?"
         show stagehand paper_talk
-        show edic neutral
+        show edic neutral:
+            subpixel True 
+            xpos 0.62 
+            easein_quad 0.38 xpos 0.58 
+        with Pause(0.48)
+        show edic neutral:
+            xpos 0.58 
         z "John Comedy. Let us give firm handshakes, as protocol says."
 
         show stagehand paper
         show conductor write_talk
         c "And so, these intertwined souls separate, just for the time being."
+
+        show black
+        with dissolve
+        hide black
+        hide rom 
+        hide edic
+        show conductor write
+        show stagehand paper_talk
+        with dissolve
+
+        s "This first act certainly has some interesting threads starting."
+
+        show conductor write_talk
+        show stagehand paper
+        c "A street-corner turned into soda cupts, and a chance encounter blossomed into prolonged contact."
+        c "[you] has become quite acquainted with [char2name] after all this time. Their boyfriend is just a footnote in their mind with the help of a new friend."
+        show stagehand paper_talk
+        show conductor write
+        show edic neutral at truecenter:
+            xpos 0.62
+        with easeinright
+        z "character"
+        show rom neutral at truecenter:
+            xpos 0.39
+        with easeinleft
+        show conductor write_talk
+        show stagehand paper
+        y "character"
 
         jump ending
   
