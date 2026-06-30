@@ -21,10 +21,9 @@ image stagehand = Live2D("images/@2/stagehand", loop = True, seamless = True, de
 define audio.crumple = "zapsplat_foley_paper_bags_pile_scrunched_push_down_compress_squash_001_113503.mp3"
 define audio.conDistress = "zapsplat_household_alarm_clock_old_fashioned_ring_very_short_44062.mp3"
 define audio.staDistress = "zapsplat_impact_hard_rock_hit_metal_and_glass_crash_smash_break_008_108027.mp3"
+define audio.romanceMusic = "Waltz in A flat major 'Farewell', Op. 69 no. 1.mp3"
 
 label start:
-    $ char2 = random.randint(1, 4)
-    $ char2name = names[str(char2)]
     scene cg far1
     with Fade(1.0, 0, 1.0)
     play music master_of_dreams_clock_ticking_337
@@ -70,11 +69,24 @@ label start:
     c "And this shut-in whose social life consists of artifical intelligences, and--{nw=.5}"
     play sound staDistress
     show conductor idle distress 
-    show stagehand smug idle_talk 
+    show stagehand smug idle_talk:
+        subpixel True 
+        xpos 1.0 
+        ease_back 0.56 xpos 1.03 
+    with Pause(0.66)
+    show stagehand smug idle_talk:
+        xpos 1.03 
     with dissolve
     s "Apologies. Forget I asked."
     show conductor neutral
     with dissolve
+    show stagehand smug idle_talk:
+        subpixel True 
+        xpos 1.03 
+        easein_cubic 0.60 xpos 1.0 
+    with Pause(0.66)
+    show stagehand smug idle_talk:
+        xpos 1.0 
     s "In any case, you clearly haven't gotten very far in your writings."
     show conductor idle_talk
     show stagehand idle
@@ -116,7 +128,8 @@ label start:
     with easeinbottom
     c "Ah, but I've never been good at making new ideas either..."
     c "Maybe you can help me write?"
-    show stagehand paper_intro paper_talk at right
+    show stagehand paper_intro paper_talk at right:
+        subpixel True pos (1.06, 1.05) zrotate -18.0 
     with easeinright
     s "Me? I'm not a creative individual, I'm afraid."
     show stagehand paper
@@ -131,17 +144,20 @@ label start:
     Plus, monologuing flowery advice doesn't make you look cool, so you might as well sit down.
 
     """
-    #just realized i'll have to seperate this when i add in the poses DANG IT\
     $ s = Character("Stagehand", color="#ff0000")
-    #sitting sfx
-    show stagehand smug paper_talk
+    show stagehand smug paper_talk:
+        subpixel True 
+        pos (1.06, 1.05) zrotate -18.0 
+        easein_quad 0.35 pos (1.0, 1.0) zrotate 0.0 
+    with Pause(0.45)
+    show stagehand smug paper_talk:
+        pos (1.0, 1.0) zrotate 0.0 
     s "... If you insist."
 
     show conductor write_intro write at left
     with easeinleft
     show stagehand neutral
     s "So..."
-    show stagehand paper
     python:
             banNames = ["Eiax", "Aelred", "Kazan", "Eilhart", "Fuca", "Olivia", "Monochrome", "B1nary", "Mr. Script", "Beatrice", "Moth", "Ceiling"]
             # every name used in a past game of mine, excluding "King" and "Queen" since they are: 1. Common words and 2. Not their real names.
@@ -150,57 +166,109 @@ label start:
 
             you = None
             while you == None or not you or you in banNames or you in special:
+                renpy.show("stagehand paper")
                 you = renpy.input("What is your character's name?")
                 you = you.strip().title()
 
                 if not you:
+                    renpy.show("stagehand paper_talk")
                     s ("I implore you to try to think of something.")
                 elif you in banNames:
+                    renpy.show("stagehand paper_talk")
                     s ("Hey now. Originality, remember?")
                 elif you in special:
+                    renpy.show("stagehand paper_talk")
                     s ("Ah...{w=1} you want to tell {i}that{/i} story? So near and dear to your heart?")
+                    renpy.show("stagehand angry_intro angry")
                     s ("Well, I'm afraid we have no time to implement such things, at least not now, {color=#cb7be1}dreamer.{/color}")
     show stagehand paper_talk
     s "[you]... a typical naming scheme. Not to say that is a bad thing."
     $ char1 = 0
+    show stagehand paper
     menu:
         s "What kind of character would this \"[you]\" be?"
 
         "A violin-ing college student, looking to fill their heart.":
             $ char1 = 1
+            play music romanceMusic fadein 1.0
             jump rom
 
-        "A middle-aged coporate slave whose veins pulse with sorrow.":
-            $ char1 = 2
-            jump trag
+        "uhhhhhh!":
+            show conductor upset_intro upset_talk
+            c "... I only have one idea."
+            show stagehand smug paper_talk
+            show conductor upset
+            s "Seems like someone ran out of time to write the full game."
+            show conductor upset_talk
+            c "Look, if I didn't rig our hair physics for no reason this wouldn't have been a problem... {size=-10}Probably.{/size}"
+            c "So we're just going to go with the only route available, okay?"
+            show conductor upset
+            show stagehand angry_intro angry
+            s "So much for someone with a clock carved into their skull."
+            show conductor upset_talk
+            c "Whatever. You're annoying, anyway."
+            show conductor upset
+            s "... & yet you perpetuate my existence."
+            show stagehand paper
+            show conductor write
+            with dissolve
+            jump rom
 
-        "The alley-dweller whose mind wavers between contempt and absurdity.":
-            $ char1 = 3
-            jump ed
+        #"A middle-aged coporate slave whose veins pulse with sorrow.":
+            #$ char1 = 2
+            #jump trag
 
-        "It doesn't matter who I am. I am the inane and the egoist!":
-            $ char1 = 4
-            jump com
+        #"The alley-dweller whose mind wavers between contempt and absurdity.":
+            #$ char1 = 3
+            #jump ed
+
+        #"It doesn't matter who I am. I am the inane and the egoist!":
+            #$ char1 = 4
+            #jump com
 
 label rom:
     $ y = Character("[you]", color="#f260ff")
-    show rom placeholder 
+    show conductor write_talk
+    with None
+    show rom sad at truecenter
     with easeinbottom
     y "I can't believe it! After 3 years of {i}happiness{/i} and {i}fulfillment{/i}, they just {color=#f260ff}dumped{/color} me!"
     y "Waah... and exams are coming up too!"
+    show rom sad:
+        subpixel True 
+        ypos 0.5 zrotate 0.0 
+        easein_quad 0.30 ypos 0.55 zrotate -9.0 
+    with Pause(0.40)
+    show rom sad:
+        ypos 0.55 zrotate -9.0 
     y "What am I going to do... ?"
     show stagehand idle_talk smug
     with dissolve
+    show conductor write
+    with None
     s "Ah... If that's the character you wish to write."
 
     show black
     with dissolve
+    show rom sad at truecenter:
+        subpixel True
+        ypos 0.5 zrotate 0.0
     hide black
+    show stagehand neutral paper
     with dissolve
 
+    show conductor write_talk
     c "Despite the circumstances, it's a bright and sunny day."
     y "Maybe this means... things will get better."
+    show rom neutral:
+        subpixel True 
+        ypos 0.59 
+        spring3 0.38 ypos 0.5 
+    with Pause(0.48)
+    show rom neutral:
+        ypos 0.5 
     y "But I don't really have the time nor the energy to worry about my love life right now. I have to worry about my {color=#f260ff}grades!"
+    show rom bother
     y "Let's see... music theory is on Friday. Guess I should study whatever the heck a phrygian is."
     hide rom
     with easeoutright
@@ -210,21 +278,57 @@ label rom:
     with dissolve
     hide black
     with dissolve
-    show rom placeholder
+    show rom neutral at truecenter
     with easeinleft
 
+    show stagehand paper_talk
+    show conductor write
     s "[you] takes a seat at a lonely table at the local library, but they can't focus for a single second."
     s "It seems today... {w=1}every couple in a 5 mile radius is also studying."
+    show rom bother
+    show stagehand pointer_talk
+    with dissolve
     s "Couples giggling 'round a romance book, couples poking each other with pool cues, even couples taking naps in the valuable bean bags!"
+    show stagehand pointer 
+    show conductor write_talk
     y "Look at these people living full lives with another human being. {i}Haah!!"
+    show rom sad:
+        subpixel True 
+        ypos 0.5
+        easein_quad 0.30 ypos 0.55
+    with Pause(0.40)
+    show rom sad:
+        ypos 0.55
     y "Whatever! Sight-reading is most of the score anyway! I... {size=-10}don't need...{/size}"
     c "The lump in their throat stops them from finishing their sentence."
     c "They walk out quietly-- well, as quietly as someone on the verge of tears can -- onto the bustling street."
+    show rom sad:
+        subpixel True 
+        ypos 0.55
+        easein_quad 0.30 ypos 0.5
+    with Pause(0.40)
+    show rom sad:
+        ypos 0.5
     y "I guess I should just go home."
     c "If [you] can just get home, maybe they can do some chores to get their mind off things... or cry into their pillow."
+    show stagehand pointer_talk
+    show conductor write
     s "But in circumstance, or perhaps fate, [you] stumbles into..."
-    y "Oh! Sorry!"
+    show conductor think_intro think_talk
+    show rom surprised:
+        subpixel True 
+        xpos 0.5 
+        ease_expo 0.40 xpos 0.39 
+    with Pause(0.50)
+    show rom surprised:
+        xpos 0.39 
 
+    $ char2 = random.randint(1, 4)
+    $ char2name = names[str(char2)]
+    # determines what person the player character meets. it is Stagehand's character.
+    # for demo purposes, this is placed right before the route split, but in the full game, it would be decided upon starting.
+
+    y "Oh! Sorry!"
     if char2 == 1:
         jump .ance
     elif char2 == 2:
@@ -236,25 +340,26 @@ label rom:
     "BUG"
 
     label rom.ance:
+
         s "ai"
 
-        return
+        jump ending
 
     label rom.edy:
         s "eddie"
 
-        return
+        jump ending
 
     label rom.gy:
         s "godfrey"
 
-        return
+        jump ending
 
     label rom.edic:
         s "john"
 
-        return
-
+        jump ending
+  
     return
 
 label trag:
@@ -279,14 +384,22 @@ label trag:
     label trag.ance:
         s "ai"
 
+        jump ending
+
     label trag.edy:
         s "eddie"
+
+        jump ending
 
     label trag.gy:
         s "godfrey"
 
+        jump ending
+
     label trag.edic:
         s "john"
+
+        jump ending
 
     return
 
@@ -312,14 +425,22 @@ label ed:
     label ed.ance:
         s "ai"
 
+        jump ending
+
     label ed.edy:
         s "eddie"
+
+        jump ending
 
     label ed.gy:
         s "godfrey"
 
+        jump ending
+
     label ed.edic:
         s "john"
+
+        jump ending
     
     return
 
@@ -345,14 +466,22 @@ label com:
     label com.ance:
         s "ai"
 
+        jump ending
+
     label com.edy:
         s "eddie"
+
+        jump ending
 
     label com.gy:
         s "godfrey"
 
+        jump ending
+
     label com.edic:
         s "john"
+
+        jump ending
 
     return
 
@@ -372,12 +501,20 @@ label ending:
 
         "The earth rumbles with magma and tension...":
             pass
+
+    scene black
+    with dissolve
+    hide black
+    show bg hill
+    show paper
+    show conductor write at left
+    show stagehand paper_talk at right
+    with dissolve
         
-    show stagehand paper_talk
     s "What meaning does a piece of writing have -- to a reader or a writer -- if it is simply \"work?\""
     s "Art is a manifestation of flaws. Perhaps there are \"more flawed\" ways to execute a certain medium, but there are no ways to eliminate flaws."
     show stagehand idle_talk smug
-    with dissovle
+    with dissolve
     s "... Are you proud of what you have done today?"
     show stagehand idle
     show conductor write_talk
@@ -385,15 +522,18 @@ label ending:
     show conductor idle_talk
     with dissolve
     c "Maybe that, too, is valuable."
+    show conductor happy
+    with dissolve
     c "I'm proud I had fun with an old friend. How about that?"
-    show conductor idle
-    show stagehand pointer_intro pointer_talk
+    show conductor neutral idle
+    show stagehand paper_intro paper_talk
     s "It's alright to admit you liked your story."
-    show stagehand pointer
+    show stagehand paper
     show conductor happy idle_talk
     c "Fine! But it's your story, too! So {i}we're{/i} proud of our collective imagination!"
-    show conductor neutral think_intro think
+    show conductor neutral think_intro think_talk
     c "... {w=1}Although, aren't you also just a figment of my imagination?"
+    show conductor think
     show stagehand idle
     with dissolve
     s "..."
@@ -410,7 +550,9 @@ label ending:
     scene black
     "???" "..."
     "???" "I guess this light-hearted reprieve ended up meaningful after all."
-    "End: A Dream within a Dream"
+    "End: A Dream within a Dream."
+
+    return
 
 "HEY HOW DID YOU GET HERE"
 return
