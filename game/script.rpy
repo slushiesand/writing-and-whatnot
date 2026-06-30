@@ -523,6 +523,10 @@ label rom:
         $ z = Character("Ai", color = "#f260ff")
         z "My name is Ai! It means love and affection."
 
+        show stagehand paper
+        show conductor write_talk
+        c "And so, these intertwined souls separate, just for the time being."
+
         jump ending
 
     label rom.edy:
@@ -724,12 +728,69 @@ label rom:
         $ z = Character("Eddie", color = "#306cc7")
         z "Eddie. Nothing more, nothing less."
 
+        show stagehand paper
+        show conductor write_talk
+        c "And so, these intertwined souls separate, just for the time being."
+
         jump ending
 
     label rom.gy:
-        s "godfrey"
-
-        y "I got broken up by my boyfriend, and I don't know why. I thought our relationship was fine, but..."
+        show gy surprised at truecenter:
+            subpixel True
+            xpos 0.62
+        with easeinright
+        show conductor think
+        s "... Someone of a secret society, expert exploiter and eyes glinting."
+        $ z = Character("???", color = "#00ffdd")
+        z "Oh, young person. Watch your step."
+        show rom surprised:
+            subpixel True 
+            zrotate 0.0 
+            ease_circ 0.45 zrotate 37.0 
+        with Pause(0.55)
+        show rom surprised:
+            zrotate 37.0
+        show stagehand pointer
+        show conductor think_talk
+        y "Sorry... ! Just in a rush."
+        show gy neutral:
+            subpixel True 
+            xpos 0.62 
+            ease_circ 0.36 xpos 0.59 
+        with Pause(0.46)
+        show gy neutral:
+            xpos 0.59 
+        show stagehand smug pointer_talk
+        show conductor write
+        with dissolve
+        z "... Pray tell, are you alright? You have tears in your eyes."
+        show rom neutral:
+            subpixel True 
+            zrotate 37.0 
+            easein_cubic 0.31 zrotate 0.0 
+        with Pause(0.41)
+        show rom neutral:
+            zrotate 0.0
+        show stagehand idle
+        with dissolve
+        show conductor write_talk
+        y "Ah, don't worry about me. I had a hard day."
+        show gy neutral:
+            subpixel True 
+            xpos 0.59
+            ease_circ 0.36 xpos 0.62
+        with Pause(0.46)
+        show gy neutral:
+            xpos 0.62
+        show conductor write
+        show stagehand idle_talk
+        z "Talk to me about it."
+        
+        show rom sad
+        with dissolve
+        show conductor write_talk
+        show stagehand idle
+        y "... I got broken up by my boyfriend, and I don't know why. I thought our relationship was fine, but..."
         y "I could tell he was drawing away. So I took him on more dates, gave him gifts..."
         show rom sad:
             subpixel True 
@@ -751,6 +812,72 @@ label rom:
         with dissolve
         y "... Oh. Sorry for dumping this all on you."
 
+        show gy surprised
+        with dissolve
+        show stagehand angry_intro angry
+        z "You know... I can help you. Get him back, I mean. Revenge or otherwise."
+
+        menu:
+
+            "Would you like to go out for coffee?":
+                show rom neutral
+                with dissolve
+                show conductor idle_talk
+                y "As an apology for the trauma dump, and like... getting to know each other better."
+                show conductor idle
+                show stagehand paper_talk
+                show gy excited
+                with dissolve
+                z "Coffee? Sure. I know a place, nice and quiet."
+
+            "How much do you get paid?":
+                show rom bother
+                with dissolve
+                show conductor idle_talk
+                y "I need... something else to do with my life..."
+                show gy sad
+                show conductor idle
+                show stagehand paper_talk
+                with dissolve
+                z "That is confidential, my friend. But I assure you, you won't need it when on the other side."
+                y "{color=#777777}(... I'm dying?){/color}"
+
+            "What is the meaning of existence?":
+                show gy neutral:
+                    subpixel True 
+                    zrotate 0.0 
+                    bop_out_time_warp 0.36 zrotate 18.0 
+                with Pause(0.46)
+                show gy neutral:
+                    zrotate 18.0 
+                z "Hehehe... that's the question we all seek to answer. It's what humanity was {i}made{/i} to answer."
+                z "You're not too bad."
+                show gy neutral:
+                    subpixel True 
+                    zrotate 18.0
+                    bop_out_time_warp 0.36 zrotate 0.0
+                with Pause(0.46)
+                show gy neutral:
+                    zrotate 0.0
+                show rom bother
+                with dissolve
+                show conductor idle_talk
+                y "{color=#777777}(What is that supposed to mean?){/color}"
+
+            "It says gullible on the ceiling.":
+                show gy bother
+                with dissolve
+                z "{color=#00ffdd}...{/color}"
+                show rom bother:
+                    subpixel True 
+                    xpos 0.39 
+                    easein_quad 0.31 xpos 0.36 
+                with Pause(0.41)
+                show rom bother:
+                    xpos 0.36 
+                show conductor idle_talk
+                y "... Sorry..."
+
         show stagehand smug paper_intro paper_talk
         s "This unexpected encounter on the street... feels so warm."
         show rom excited
@@ -768,12 +895,85 @@ label rom:
             ypos 0.5 
         y "Please, what is your name?"
 
+        show gy neutral:
+            subpixel True 
+            xpos 0.62 
+            ease_circ 0.36 xpos 0.59 
+        with Pause(0.46)
+        show gy neutral:
+            xpos 0.59 
+        show conductor write
+        show stagehand paper_talk
+        $ z = Character("Godfrey", color = "#00ffdd")
+        z "Simply... call me Godfrey. We will meet again, [you]."
+
+        show stagehand paper
+        show conductor write_talk
+        c "And so, these intertwined souls separate, just for the time being."
 
         jump ending
 
     label rom.edic:
-        s "john"
+        show edic neutral at truecenter:
+            subpixel True
+            xpos 0.62
+        with easeinright
+        show conductor upset_intro upset
+        s "... A white guy named John."
+        $ z = Character("John", color = "#07ce00")
+        show conductor upset_talk
+        show stagehand pointer
+        c "... Is that it?"
+        show stagehand idle_talk
+        show conductor upset
+        with dissolve
+        s "Yeah."
+        show conductor write_talk
+        show stagehand idle
+        show rom neutral:
+            subpixel True 
+            xpos 0.39 
+            easein_circ 0.49 xpos 0.51 
+        with Pause(0.59)
+        show rom neutral:
+            xpos 0.51 
+        y "Ahem! Sorry, stock photo white man. Coming through."
+        show stagehand idle_talk
+        show conductor write
+        show edic neutral:
+            subpixel True 
+            zrotate 0.0 
+            ease_elastic 0.37 zrotate -9.0 
+        with Pause(0.47)
+        show edic neutral:
+            zrotate -9.0
+        z "I have a Doctorate in Psychology."
+        show conductor happy write_talk
+        c "Not in marketing?! Oh, uhm, I mean."
+        show conductor neutral
+        show rom excited:
+            subpixel True 
+            ypos 0.59 
+            spring3 0.38 ypos 0.5 
+        with Pause(0.48)
+        show rom excited:
+            ypos 0.5 
+        y "What?! Really? Then, if you don't mind me stopping you..."
 
+        show edic neutral:
+            subpixel True 
+            zrotate -9.0 
+            easein_quad 0.40 zrotate 0.0 
+        with Pause(0.50)
+        show edic neutral:
+            zrotate 0.0 
+        show rom sad:
+            subpixel True 
+            xpos 0.51 
+            easein_quad 0.51 xpos 0.39 
+        with Pause(0.61)
+        show rom sad:
+            xpos 0.39 
         y "I got broken up by my boyfriend, and I don't know why. I thought our relationship was fine, but..."
         y "I could tell he was drawing away. So I took him on more dates, gave him gifts..."
         show rom sad:
@@ -796,6 +996,78 @@ label rom:
         with dissolve
         y "... Oh. Sorry for dumping this all on you."
 
+        show edic bother
+        show stagehand paper_intro paper_talk
+        with dissolve
+        z "It is not your fault. The human brain is flawed with irrationality."
+        show stagehand paper
+
+        menu:
+
+            "Would you like to go out for coffee?":
+                show rom neutral
+                with dissolve
+                show conductor idle_talk
+                y "As an apology for the trauma dump, and like... getting to know each other better."
+                show conductor idle
+                show stagehand paper_talk
+                z "I'm not friends with minors."
+                show conductor idle_talk
+                show stagehand paper
+                show rom bother
+                y "... I'm a senior in college?"
+                show conductor idle
+                show stagehand idle_talk
+                with dissolve
+                show edic surprised
+                z "Oh, sorry. Still kind of weird, but okay."
+
+            "How much do you get paid?":
+                show rom bother
+                with dissolve
+                show conductor idle_talk
+                y "I need... something else to do with my life..."
+                show edic neutral
+                show conductor idle
+                show stagehand paper_talk
+                with dissolve
+                z "Six figure salary."
+                show stagehand paper
+                show conductor think_intro think_talk
+                show rom surprised
+                y "As a psychology major? Who are you working for, the CIA?"
+                show conductor think
+                show stagehand smug pointer_talk
+                show edic excited
+                with dissolve
+                z "Close! The Queen of England."
+
+            "What is the meaning of existence?":
+                show edic sad
+                show stagehand paper_talk
+                z "I don't know. Maybe we're not meant to know."
+                show stagehand paper
+                show conductor write_intro write_talk
+                c "That's surprisingly profound coming from a man named Jo--{nw=1}"
+                show conductor distress write
+                show stagehand smug paper_talk
+                z "Or, like, marmalade."
+                show conductor neutral upset_intro upset_talk
+                show stagehand paper
+                c "... Is he Australian now?"
+
+            "It says gullible on the ceiling.":
+                show edic neutral
+                show stagehand pointer_talk
+                z "No, but it says gullible below your feet."
+                show stagehand pointer
+                show conductor idle_talk
+                show rom excited
+                y "Er, really?"
+                show rom sad
+                y "... No."
+            
+
         show stagehand smug paper_intro paper_talk
         s "This unexpected encounter on the street... feels so warm."
         show rom excited
@@ -812,6 +1084,13 @@ label rom:
         show rom neutral:
             ypos 0.5 
         y "Please, what is your name?"
+        show stagehand paper_talk
+        show edic neutral
+        z "John Comedy. Let us give firm handshakes, as protocol says."
+
+        show stagehand paper
+        show conductor write_talk
+        c "And so, these intertwined souls separate, just for the time being."
 
         jump ending
   
@@ -900,7 +1179,7 @@ label ed:
     return
 
 label com:
-    $ y = Character("[you]", color="#ffc400")
+    $ y = Character("[you]", color="#07ce00")
     show com placeholder 
     with easeinbottom
     y "O' senselessness and frivolity. My love, my bane!"
@@ -941,7 +1220,7 @@ label com:
     return
 
 label ending:
-
+    show conductor happy write
     menu:
         c "There's only one way for this story to end."
 
