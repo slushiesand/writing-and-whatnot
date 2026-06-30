@@ -119,6 +119,30 @@
                 }
             },
             {
+                "scope": "renpy.meta.color.#f260ff",
+                "settings": {
+                    "foreground": "#f260ff"
+                }
+            },
+            {
+                "scope": "renpy.meta.color.#306cc7",
+                "settings": {
+                    "foreground": "#306cc7"
+                }
+            },
+            {
+                "scope": "renpy.meta.color.#00ffdd",
+                "settings": {
+                    "foreground": "#00ffdd"
+                }
+            },
+            {
+                "scope": "renpy.meta.color.#ffc400",
+                "settings": {
+                    "foreground": "#ffc400"
+                }
+            },
+            {
                 "scope": "renpy.meta.color.#ff0000",
                 "settings": {
                     "foreground": "#ff0000"
@@ -143,33 +167,21 @@
                 }
             },
             {
-                "scope": "renpy.meta.color.#00ffdd",
-                "settings": {
-                    "foreground": "#00ffdd"
-                }
-            },
-            {
-                "scope": "renpy.meta.color.#ffc400",
-                "settings": {
-                    "foreground": "#ffc400"
-                }
-            },
-            {
-                "scope": "renpy.meta.color.#306cc7",
-                "settings": {
-                    "foreground": "#306cc7"
-                }
-            },
-            {
                 "scope": "renpy.meta.color.#f79aff",
                 "settings": {
                     "foreground": "#f79aff"
                 }
             },
             {
-                "scope": "renpy.meta.color.#f260ff",
+                "scope": "renpy.meta.color.#f0f0f0",
                 "settings": {
-                    "foreground": "#f260ff"
+                    "foreground": "#f0f0f0"
+                }
+            },
+            {
+                "scope": "renpy.meta.color.#777777",
+                "settings": {
+                    "foreground": "#777777"
                 }
             }
         ]

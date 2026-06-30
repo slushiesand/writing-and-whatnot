@@ -12,7 +12,7 @@ init python:
 define c = Character("???", color = "#cb7be1")
 define s = Character("Friend", color = "#ff0000")
 define y = Character("[you]")
-define z = Character("placeholder")
+define z = Character("???")
 
 image black = "#000"
 image conductor = Live2D("images/@2/conductor", height = 0.99, loop = True, seamless = True, default_fade = False)
@@ -255,9 +255,9 @@ label rom:
         ypos 0.5 zrotate 0.0
     hide black
     show stagehand neutral paper
+    show conductor write_talk
     with dissolve
 
-    show conductor write_talk
     c "Despite the circumstances, it's a bright and sunny day."
     y "Maybe this means... things will get better."
     show rom neutral:
@@ -277,12 +277,12 @@ label rom:
     show black
     with dissolve
     hide black
+    show conductor write
+    show stagehand paper_talk
     with dissolve
     show rom neutral at truecenter
     with easeinleft
 
-    show stagehand paper_talk
-    show conductor write
     s "[you] takes a seat at a lonely table at the local library, but they can't focus for a single second."
     s "It seems today... {w=1}every couple in a 5 mile radius is also studying."
     show rom bother
@@ -341,22 +341,477 @@ label rom:
 
     label rom.ance:
 
-        s "ai"
+        show ance surprised at truecenter:
+            subpixel True
+            xpos 0.62
+        with easeinright
+        show conductor think
+        s "... A bright-eyed part-timer at an antique store, run by their grandparents."
+        $ z = Character("???", color = "#f260ff")
+        show rom neutral
+        show conductor write_talk
+        with dissolve
+        show stagehand pointer
+        y "Wait... {w=1}Hey, you're that cute worker at the antique store!\n{color=#777777}(Oops, I didn't mean to say that out loud.)"
+        show ance surprised:
+            subpixel True 
+            ypos 0.59 
+            spring3 0.38 ypos 0.5 
+        with Pause(0.48)
+        show ance surprised:
+            ypos 0.5 
+        show stagehand paper_talk
+        with dissolve
+        show conductor write
+        z "Er, cute... ? Well, I'm glad you think so!"
+        show ance neutral:
+            zrotate 0.0 
+            easein_quad 0.30 zrotate 9.0 
+        with Pause(0.40)
+        show ance neutral:
+            zrotate 9.0 
+        z "Hehe, are you a regular? I don't quite recognize everyone's face yet."
+
+        show stagehand paper
+        show conductor think_intro think_talk
+        c "... Do antique shops have regulars?"
+        show conductor think
+        show stagehand pointer_talk
+        with dissolve
+        s "Anything is possible in fiction."
+        show conductor think_talk
+        show stagehand pointer
+        c "Haha, true. Well then..."
+
+        show conductor idle_talk
+        with dissolve
+        show rom surprised:
+            subpixel True 
+            ypos 0.5 
+            ease_back 0.28 ypos 0.45 
+        with Pause(0.38)
+        show rom surprised:
+            ypos 0.45 
+        show ance neutral:
+            easein_quad 0.30 zrotate 0.0
+        with Pause(0.38)
+        show ance neutral:
+            zrotate 0.0
+        y "No, I'm not a regular. I just visited with my boyfriend a while ago."
+        show rom sad:
+            subpixel True
+            ypos 0.45
+            easein_quad 0.30 ypos 0.5
+        with Pause(0.40)
+        show rom sad:
+            ypos 0.5
+        y "I got broken up by my boyfriend, and I don't know why. I thought our relationship was fine, but..."
+        y "I could tell he was drawing away. So I took him on more dates, gave him gifts..."
+        show rom sad:
+            subpixel True 
+            zrotate 0.0 
+            ease 0.40 zrotate 27.0 
+        with Pause(0.50)
+        show rom sad:
+            zrotate 27.0
+        show conductor upset_intro upset_talk
+        y "I guess it wasn't enough. I guess {i}I{/i} wasn't enough."
+        show rom surprised:
+            subpixel True 
+            zrotate 27.0 
+            ease_back 0.36 zrotate 0.0 
+        with Pause(0.46)
+        show rom surprised:
+            zrotate 0.0
+        show conductor idle
+        with dissolve
+        y "... Oh. Sorry for dumping this all on you."
+        show stagehand idle_talk
+        with dissolve
+        show ance sad:
+            subpixel True 
+            ypos 0.5 
+            ease_back 0.28 ypos 0.45 
+        with Pause(0.38)
+        show ance sad:
+            ypos 0.45 
+        z "I'm... {w=1}sorry to hear that. If you ever want to travel to a different era, the store is always open."
+        show ance neutral:
+            ypos 0.45
+            ease_back 0.28 ypos 0.5
+        with dissolve
+        z "I might not be there all the time, but I'll do all I can to assist you."
+
+        menu:
+            "Would you like to go out for coffee?":
+                show rom neutral
+                with dissolve
+                show conductor idle_talk
+                y "As an apology for the trauma dump, and like... getting to know each other better."
+                show conductor idle
+                show stagehand paper_intro paper_talk
+                show ance excited:
+                    subpixel True 
+                    ypos 0.59 
+                    spring3 0.38 ypos 0.5 
+                with Pause(0.48)
+                show ance excited:
+                    ypos 0.5 
+                z "Oh, thank you! Yes, that sounds nice."
+                z "How about... tomorrow for lunch? Or just whenever! I don't work tomorrow, anyway."
+            
+            "How much do you get paid?":
+                show rom bother
+                with dissolve
+                show conductor idle_talk
+                y "I need... something else to do with my life..."
+                show stagehand idle_talk
+                with dissolve
+                show conductor idle
+                z "I get paid minimum wage. I'm, uh, sure I'll get paid more when I get a full position, though!"
+                show conductor idle_talk
+                show stagehand idle
+                c "Yeah, I don't think an antique worker will ever get paid much..."
+                show stagehand angry_intro angry
+                s "What is your problem with my antique store?!"
+
+            "What is the meaning of existence?":
+                show rom sad
+                show ance sad
+                with dissolve
+                show stagehand idle_talk
+                z "Uhm... I don't think life is that bleak!"
+                z "Listen! Life is bigger than one person. Antiques are proof of that!"
+
+            "It says gullible on the ceiling.":
+                show ance excited:
+                    subpixel True 
+                    ypos 0.59 
+                    spring3 0.38 ypos 0.5 
+                with Pause(0.48)
+                show ance excited:
+                    ypos 0.5 
+                show stagehand idle_talk
+                z "Oh? Really?!"
+                show rom bother
+                with dissolve
+                y "... We are outside."
+                show ance sad
+                with dissolve
+                z "... Oh."
+        
+        show stagehand smug paper_intro paper_talk
+        s "This unexpected encounter on the street... feels so warm."
+        show rom excited
+        with dissolve
+        show stagehand paper
+        show conductor write_intro write_talk
+        y "I... have to see them again."
+        y "Maybe, just maybe... they'll be the answer to my heartbreak!"
+        show rom neutral:
+            subpixel True 
+            ypos 0.59 
+            spring3 0.38 ypos 0.5 
+        with Pause(0.48)
+        show rom neutral:
+            ypos 0.5 
+        y "Please, what is your name?"
+        show ance surprised
+        with dissolve
+        show conductor write
+        show stagehand paper_talk
+        $ z = Character("Ai", color = "#f260ff")
+        z "My name is Ai! It means love and affection."
 
         jump ending
 
     label rom.edy:
-        s "eddie"
+        show edy neutral at truecenter:
+            subpixel True
+            xpos 0.62
+        with easeinright
+        show conductor think
+        s "... A scrawny street-performer who borders on packing it up."
+        $ z = Character("???", color = "#306cc7")
+        s "A somber tune, with occasional dissonant chords, quivers at the street corner."
+        show rom sad
+        with dissolve
+        y "This tune... it feels perfect for what I'm feeling."
+        show edy neutral:
+            subpixel True 
+            xpos 0.62 
+            ease_circ 0.41 xpos 0.58 
+        with Pause(0.51)
+        show edy neutral:
+            xpos 0.58 
+        z "... Do you like it, stranger?"
+        show rom sad:
+            subpixel True 
+            zrotate 0.0 
+            easein_quad 0.40 zrotate 18.0 
+        with Pause(0.50)
+        show rom sad:
+            zrotate 18.0 
+        y "Yeah. I... got broken up with a few hours ago."
+        show edy neutral:
+            subpixel True 
+            xpos 0.58
+            ease_circ 0.41 xpos 0.62 
+        with Pause(0.51)
+        show edy neutral:
+            xpos 0.62
+        show rom sad:
+            subpixel True 
+            zrotate 18.0 
+            easein_quad 0.40 zrotate 0.0
+        with Pause(0.50)
+        show rom sad:
+            zrotate 0.0
+        z "That's how it is, huh?"
+
+        show stagehand pointer
+        show conductor idle_talk
+        with dissolve
+        y "I got broken up by my boyfriend, and I don't know why. I thought our relationship was fine, but..."
+        y "I could tell he was drawing away. So I took him on more dates, gave him gifts..."
+        show rom sad:
+            subpixel True 
+            zrotate 0.0 
+            ease 0.40 zrotate 27.0 
+        with Pause(0.50)
+        show rom sad:
+            zrotate 27.0
+        show conductor upset_intro upset_talk
+        y "I guess it wasn't enough. I guess {i}I{/i} wasn't enough."
+        show rom surprised:
+            subpixel True 
+            zrotate 27.0 
+            ease_back 0.36 zrotate 0.0 
+        with Pause(0.46)
+        show rom surprised:
+            zrotate 0.0
+        show conductor idle
+        with dissolve
+        y "... Oh. Sorry for dumping this all on you."
+
+        show edy sad
+        with dissolve
+        show stagehand smug pointer_talk
+        z "... Something similar happened to me, long ago."
+        show edy sad:
+            subpixel True 
+            ypos 0.5 
+            easein_quad 0.35 ypos 0.55 
+        with Pause(0.45)
+        show edy sad:
+            ypos 0.55 
+        z "Now I just sing on the street, but I don't even know if I can afford that for much longer."
+        show edy neutral:
+            subpixel True
+            ypos 0.55
+            easein_quad 0.35 ypos 0.5
+        with Pause(0.45)
+        show edy neutral:
+            ypos 0.5
+        show stagehand pointer
+
+        menu:
+            
+            "Would you like to go out for coffee?":
+                show rom neutral
+                with dissolve
+                show conductor idle_talk
+                y "As an apology for the trauma dump, and like... getting to know each other better."
+                show conductor idle
+                show stagehand paper_intro paper_talk
+                show edy excited:
+                    subpixel True 
+                    ypos 0.59 
+                    spring3 0.38 ypos 0.5 
+                with Pause(0.48)
+                show edy excited:
+                    ypos 0.5 
+                z "Oh! It's been so long since I've had high-quality, non-instant coffee."
+                z "... Thank you."
+
+            "How much do you get paid?":
+                show rom bother
+                with dissolve
+                show conductor idle_talk
+                y "I need... something else to do with my life..."
+                show edy sad
+                show conductor idle
+                show stagehand paper_intro paper_talk
+                with dissolve
+                z "I live purely off tips. But for the past long while... it has been nothing."
+                show rom sad:
+                    subpixel True 
+                    parallel:
+                        xpos 0.39 
+                        easein_quad 0.37 xpos 0.44 
+                    parallel:
+                        zrotate 0.0 
+                        ease2 0.37 zrotate 9.0 
+                with Pause(0.47)
+                show rom sad:
+                    xpos 0.44 zrotate 9.0 
+                show conductor idle_talk
+                y "... Here, since I don't have to pay for dates anymore."
+                show rom sad:
+                    subpixel True 
+                    xpos 0.44 zrotate 9.0 
+                    easein_quad 0.39 xpos 0.39 zrotate 0.0 
+                with Pause(0.49)
+                show rom sad:
+                    xpos 0.39 zrotate 0.0 
+                show edy neutral
+                with dissolve
+                show stagehand paper_talk
+                z "Hahaha... Thank you."
+
+            "What is the meaning of existence?":
+                show edy sad
+                with dissolve
+                show stagehand paper_intro paper_talk
+                z "I... don't know. If life is love, then maybe there is no meaning."
+                show stagehand paper
+                show conductor upset_intro upset
+                y "..."
+            
+            "It says gullible on the ceiling.":
+                show edy sad
+                with dissolve
+                show stagehand paper_intro paper_talk
+                z "I was gullible to think that music could bring me a living."
+                show stagehand paper
+                show conductor idle_talk
+                show rom neutral
+                with dissolve
+                y "... I believe in you. I'm a music student, you know?"
+                show edy excited:
+                    subpixel True 
+                    ypos 0.59 
+                    spring3 0.38 ypos 0.5 
+                with Pause(0.48)
+                show edy excited:
+                    ypos 0.5 
+                z "... !"
+        
+        show stagehand smug paper_intro paper_talk
+        s "This unexpected encounter on the street... feels so warm."
+        show rom excited
+        with dissolve
+        show stagehand paper
+        show conductor write_intro write_talk
+        y "I... have to see them again."
+        y "Maybe, just maybe... they'll be the answer to my heartbreak!"
+        show rom neutral:
+            subpixel True 
+            ypos 0.59 
+            spring3 0.38 ypos 0.5 
+        with Pause(0.48)
+        show rom neutral:
+            ypos 0.5 
+        y "Please, what is your name?"
+
+        show edy bother:
+            subpixel True 
+            zrotate 0.0 
+            easein_quad 0.38 zrotate -9.0 
+        with Pause(0.48)
+        show edy bother:
+            zrotate -9.0 
+        $ z = Character("Eddie", color = "#306cc7")
+        z "Eddie. Nothing more, nothing less."
 
         jump ending
 
     label rom.gy:
         s "godfrey"
 
+        y "I got broken up by my boyfriend, and I don't know why. I thought our relationship was fine, but..."
+        y "I could tell he was drawing away. So I took him on more dates, gave him gifts..."
+        show rom sad:
+            subpixel True 
+            zrotate 0.0 
+            ease 0.40 zrotate 27.0 
+        with Pause(0.50)
+        show rom sad:
+            zrotate 27.0
+        show conductor upset_intro upset_talk
+        y "I guess it wasn't enough. I guess {i}I{/i} wasn't enough."
+        show rom surprised:
+            subpixel True 
+            zrotate 27.0 
+            ease_back 0.36 zrotate 0.0 
+        with Pause(0.46)
+        show rom surprised:
+            zrotate 0.0
+        show conductor idle
+        with dissolve
+        y "... Oh. Sorry for dumping this all on you."
+
+        show stagehand smug paper_intro paper_talk
+        s "This unexpected encounter on the street... feels so warm."
+        show rom excited
+        with dissolve
+        show stagehand paper
+        show conductor write_intro write_talk
+        y "I... have to see them again."
+        y "Maybe, just maybe... they'll be the answer to my heartbreak!"
+        show rom neutral:
+            subpixel True 
+            ypos 0.59 
+            spring3 0.38 ypos 0.5 
+        with Pause(0.48)
+        show rom neutral:
+            ypos 0.5 
+        y "Please, what is your name?"
+
+
         jump ending
 
     label rom.edic:
         s "john"
+
+        y "I got broken up by my boyfriend, and I don't know why. I thought our relationship was fine, but..."
+        y "I could tell he was drawing away. So I took him on more dates, gave him gifts..."
+        show rom sad:
+            subpixel True 
+            zrotate 0.0 
+            ease 0.40 zrotate 27.0 
+        with Pause(0.50)
+        show rom sad:
+            zrotate 27.0
+        show conductor upset_intro upset_talk
+        y "I guess it wasn't enough. I guess {i}I{/i} wasn't enough."
+        show rom surprised:
+            subpixel True 
+            zrotate 27.0 
+            ease_back 0.36 zrotate 0.0 
+        with Pause(0.46)
+        show rom surprised:
+            zrotate 0.0
+        show conductor idle
+        with dissolve
+        y "... Oh. Sorry for dumping this all on you."
+
+        show stagehand smug paper_intro paper_talk
+        s "This unexpected encounter on the street... feels so warm."
+        show rom excited
+        with dissolve
+        show stagehand paper
+        show conductor write_intro write_talk
+        y "I... have to see them again."
+        y "Maybe, just maybe... they'll be the answer to my heartbreak!"
+        show rom neutral:
+            subpixel True 
+            ypos 0.59 
+            spring3 0.38 ypos 0.5 
+        with Pause(0.48)
+        show rom neutral:
+            ypos 0.5 
+        y "Please, what is your name?"
 
         jump ending
   
