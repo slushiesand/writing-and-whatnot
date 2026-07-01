@@ -32,7 +32,7 @@ Short Ren'Py visual novel where "Conductor" and "Stagehand" make a short story t
 <br> Free use, but direct distribution is prohibited. Please visit the original website for the file.
 <br> https://amachamusic.chagasi.com/music_yume.html
 
-- "Waltz in A flat major 'Farewell', Op. 69 no. 1." by Fredric Chopin, performed by Edward Rosser.
+- "Waltz in A flat major 'Farewell', Op. 69 no. 1." by Frédéric Chopin, performed by Edward Rosser.
 <br> Public domain.
 <br> https://musopen.org/music/4415-waltzes-op-69/
 - All sound effects by ZapSplat
