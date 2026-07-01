@@ -36,4 +36,6 @@ Short Ren'Py visual novel where "Conductor" and "Stagehand" make a short story t
 <br> Public domain.
 <br> https://musopen.org/music/4415-waltzes-op-69/
 - All sound effects by ZapSplat
+
+- also idk where to put this but arial nova bold is the font. special thanks tally hall the band
   
