@@ -183,7 +183,6 @@ label start:
                     s ("Well, I'm afraid we have no time to implement such things, at least not now, {color=#cb7be1}dreamer.{/color}")
     show stagehand paper_talk
     s "[you]... a typical naming scheme. Not to say that is a bad thing."
-    $ char1 = 0
     show stagehand paper
     menu:
         s "What kind of character would this \"[you]\" be?"
@@ -194,6 +193,7 @@ label start:
             jump rom
 
         "uhhhhhh!":
+            $ char1 = 1
             show conductor upset_intro upset_talk
             c "... I only have one idea."
             show stagehand smug paper_talk
@@ -537,21 +537,210 @@ label rom:
         with dissolve
 
         s "This first act certainly has some interesting threads starting."
+        s "I have to ask, however. Is it ethical for [you] to find Ai cute before they broke up with their boyfriend?"
+        show conductor write_talk
+        show stagehand paper
+        c "Eh, I dunno. Never said [you] was an ethical person."
+        show conductor think_intro think_talk
+        c "I mean, maybe it's fine. It's just a one-word descriptor that hardly means anything. I can say dolls are cute just fine, can't I?"
+        show conductor think
+        show stagehand smug paper_talk
+        s "I suppose we are just playing with dolls, like we once did."
+        s "It is debatable whether ethics matter at all."
+
+        show black
+        with dissolve
+        hide black
+        show conductor write_talk
+        show stagehand neutral paper
+        with dissolve
 
         show conductor write_talk
         show stagehand paper
-        c "A street-corner turned into soda cupts, and a chance encounter blossomed into prolonged contact."
+        c "A street-corner turned into soda cups, and a chance encounter blossomed into prolonged contact."
         c "[you] has become quite acquainted with [char2name] after all this time. Their boyfriend is just a footnote in their mind with the help of a new friend."
         show stagehand paper_talk
         show conductor write
-        z "character"
+        show ance neutral at truecenter:
+            xpos 0.62
+        with easeinright
+        z "Hey [you]! We recently stocked some new donations. Come hang out in the store~!"
         show rom neutral at truecenter:
             xpos 0.39
         with easeinleft
         show conductor write_talk
         show stagehand paper
-        y "character"
+        y "Aah... I have spent so much on trinkets already... !"
 
+        show conductor write
+        show stagehand paper_talk
+        s "This single life isn't awful, truthfully. A good friend that brings joy at all times is also a good replacement."
+        s "[you] could even say that they wouldn't mind [char2name] as a partner..."
+        show stagehand smug
+        s "Ahem. But they digress."
+        show stagehand idle
+        with dissolve
+        show conductor write_talk
+        c "But... this light honeymoon phase can't last forever."
+        c "One day, [char2name] comes up to [you], acting a bit out of character."
+        show black
+        with dissolve
+        hide black
+        hide ance
+        with dissolve  
+
+        show ance neutral at truecenter:
+            xpos 0.62
+        with easeinright
+        show stagehand idle_talk
+        z "[you]! I got a proposal for you. Nothing super serious or anything, but... it means a lot to me. Kinda. More than kinda?"
+        show conductor write_talk
+        show stagehand idle
+        show rom neutral:
+            subpixel True 
+            zrotate 0.0 
+            easein_quad 0.45 zrotate 9.0 
+        with Pause(0.55)
+        show rom neutral:
+            zrotate 9.0 
+        y "What's up? You usually never concern yourself with stuff like that."
+        show stagehand idle_talk
+        show conductor write
+        show ance bother:
+            subpixel True 
+            ypos 0.5 
+            ease_cubic 0.43 ypos 0.55 
+        with Pause(0.53)
+        show ance bother:
+            ypos 0.55
+        z "Uh, well... it's that..."
+        show ance bother:
+            subpixel True 
+            zrotate 0.0 
+            easein_elastic 0.47 zrotate -9.0 
+        with Pause(0.57)
+        show ance bother:
+            zrotate -9.0
+        s "Ai fidgets with their fingers shyly."
+        show ance bother:
+            subpixel True 
+            ypos 0.55 zrotate -9.0 
+            easein_quad 0.39 ypos 0.5 zrotate 0.0 
+        with Pause(0.49)
+        show ance bother:
+            ypos 0.5 zrotate 0.0
+        z "... Do you want to hang out at my house? My grandparents live there. You know, the ones that run the shop."
+        z "I think it'd be nice to meet them in a non-professional capacity. They're very appreciative of you, since you pop by so much."
+        show ance sad:
+            subpixel True 
+            ypos 0.5 
+            ease_cubic 0.43 ypos 0.55 
+        with Pause(0.53)
+        show ance sad:
+            ypos 0.55
+        z "Although, is it weird for a college graduate and boomers to be friends? Are my grandparents college graduates?"
+        show ance neutral:
+            subpixel True 
+            ypos 0.59 
+            spring3 0.38 ypos 0.5 
+        with Pause(0.48)
+        show ance neutral:
+            ypos 0.5
+        z "ANYWAY! Yeah. My house! You can hang out with my grandparents, and then you can hang out with me."
+        z "Like, {i}chill{/i} hang out. Since we're not in the city. We live in suburbia. Forget to mention that, sorry!! Hahah..."
+
+        show conductor distress write_talk
+        with dissolve
+        show stagehand paper_intro paper
+        show rom excited:
+            subpixel True 
+            ypos 0.59 
+            spring3 0.38 ypos 0.5 
+        with Pause(0.48)
+        show rom excited:
+            ypos 0.5
+        c "Are they... {i}asking you out on a date?!{/i}"
+        c "Obviously, they are very nervous about it. [you] has never seen Ai stutter this much in their life, even when dealing with difficult customers."
+        c "But meeting parents on a first date? {i}Man.{/i} [you] doesn't know if they're ready for that pressure."
+        show conductor neutral
+        
+        menu:
+            c "Although, grandparents aren't actual parents, huh?"
+
+            "It's a date!":
+                show stagehand paper_talk
+                show conductor write
+                show ance excited:
+                    subpixel True 
+                    xpos 0.62 
+                    ease_elastic 0.47 xpos 0.67 
+                with Pause(0.57)
+                show ance excited:
+                    xpos 0.67
+                z "A date?!"
+                show ance bother:
+                    subpixel True 
+                    xpos 0.67 
+                    easein_quad 0.48 xpos 0.62 
+                with Pause(0.58)
+                show ance bother:
+                    xpos 0.62
+                z "Ahahaha... it's not like that! Who said it's like that??"
+                show ance excited 
+                with dissolve
+                z "Well, I guess it's just a term of expression. Hehehe."
+                hide conductor
+                hide stagehand
+                hide ance
+                hide rom
+                show happy ai
+                with fade
+                z "I'll send you my address later, okay?"
+                z "Tell me what movies you like! & what snacks! I'll make sure to have everything prepared!"
+                z "Don't lift a finger! Okay?!"
+
+            "Do you have parents?":
+                show rom surprised
+                with dissolve
+                y "If you work with your grandparents, and you live with your grandparents... are your actual parents {i}alive?{/i}"
+                show ance sad
+                with dissolve
+                show conductor neutral upset_intro upset
+                show stagehand angry_intro angry
+                play sound staDistress
+                s "... {w=1}In {i}what world{/i} would this be acceptable to say to someone who just asked you out on a date?!"
+                s "Anyway. I suppose you never claimed {i}[you] had brain cells, either.{/i}"
+                show ance sad:
+                    subpixel True 
+                    xpos 0.62 
+                    easein_back 0.46 xpos 0.66 
+                with Pause(0.56)
+                show ance sad:
+                    xpos 0.66
+                show stagehand idle_talk
+                with dissolve
+                s "... Ai is taken aback by [you]'s question"
+                show rom sad
+                with dissolve
+                show ance sad:
+                    subpixel True 
+                    zrotate 0.0 
+                    ease2 0.41 zrotate -9.0 
+                with Pause(0.51)
+                show ance sad:
+                    zrotate -9.0 
+                z "... No, they're not."
+                z "I knew them, once. But they died in a car accident a long time ago."
+                hide ance sad
+                with easeoutright
+                z "Soon, they'll be dead for longer than I knew them for."
+                show conductor upset_talk
+                show stagehand idle
+                y "... I'm sorry."
+                show stagehand angry
+                show conductor upset
+                with dissolve
+                s "It should be very, {i}very{/i} obvious you messed up by saying that."
 
         jump ending
 
@@ -762,26 +951,238 @@ label rom:
         with dissolve
         hide black
         hide rom 
-        hide ance
+        hide edy
         show conductor write
         show stagehand paper_talk
         with dissolve
 
         s "This first act certainly has some interesting threads starting."
+        show conductor write_talk
+        show stagehand paper
+        c "Eddie is really emo, by the way. I don't think an inflection of a smile graced their speech during that entire conversation."
+        show stagehand smug paper_talk
+        s "Perhaps they are \"simply nonchalant like that,\" as the kids say."
+        show conductor upset_intro upset_talk
+        show stagehand paper
+        c "... Please never talk like a modenr person again. Stay with your brooding characters and verbose language!"
+
+        show black
+        with dissolve
+        hide black
+        show conductor write_talk
+        show stagehand neutral paper
+        with dissolve
 
         show conductor write_talk
         show stagehand paper
-        c "A street-corner turned into soda cupts, and a chance encounter blossomed into prolonged contact."
+        c "A street-corner turned into soda cups, and a chance encounter blossomed into prolonged contact."
         c "[you] has become quite acquainted with [char2name] after all this time. Their boyfriend is just a footnote in their mind with the help of a new friend."
         show stagehand paper_talk
         show conductor write
-        z "character"
+        show edy neutral at truecenter:
+            xpos 0.62
+        with easeinright
+        z "... Oh! I see you brought your violin with you."
         show rom neutral at truecenter:
             xpos 0.39
         with easeinleft
         show conductor write_talk
         show stagehand paper
-        y "character"
+        y "Yeah! I'm playing with you today!"
+
+        show conductor write
+        show stagehand paper_talk
+        s "This single life isn't awful, truthfully. A good friend that brings joy at all times is also a good replacement."
+        s "[you] could even say that they wouldn't mind [char2name] as a partner..."
+        show stagehand smug
+        s "Ahem. But they digress."
+        show stagehand idle
+        with dissolve
+        show conductor write_talk
+        c "But... this light honeymoon phase can't last forever."
+        c "One day, [char2name] comes up to [you], acting a bit out of character."
+        show black
+        with dissolve
+        hide black
+        hide edy
+        with dissolve  
+
+        show edy neutral at truecenter:
+            xpos 0.62
+        with easeinright
+        show stagehand idle_talk
+        z "[you]... I... need to talk to you. It's important."
+        show conductor write_talk
+        show stagehand idle
+        show rom neutral:
+            subpixel True 
+            zrotate 0.0 
+            easein_quad 0.45 zrotate 9.0 
+        with Pause(0.55)
+        show rom neutral:
+            zrotate 9.0 
+        y "What's up? You usually never concern yourself with stuff like that."
+        show stagehand idle_talk
+        show conductor write
+        show edy sad
+        with dissolve
+        z "... I'm too far behind on my rent. My landlord is going to kick me out."
+        show edy sad:
+            subpixel True 
+            ypos 0.5 
+            easein_quad 0.34 ypos 0.55 
+        with Pause(0.44)
+        show edy sad:
+            ypos 0.55
+        z "I have to move back home."
+        show rom sad:
+            subpixel True 
+            xpos 0.39 
+            ease_back 0.44 xpos 0.43 
+        with Pause(0.54)
+        show rom sad:
+            xpos 0.43
+        show conductor upset_intro upset_talk
+        show stagehand idle
+        y "Home?! But isn't that..."
+        show conductor upset
+        show stagehand angry_intro angry
+        show edy sad:
+            subpixel True 
+            zrotate 0.0 
+            ease_quart 0.37 zrotate -18.0 
+        with Pause(0.47)
+        show edy sad:
+            zrotate -18.0
+        z "Yes. The home that kicked me out onto the streets in the first place."
+        z "But I have no choice. I have to go back there."
+        z "They'll laugh at me for being a street musician, but if I indebt myself to my parents... they'll probably let me stay."
+        show rom surprised:
+            subpixel True 
+            ypos 0.59 
+            spring3 0.38 ypos 0.5 
+        with Pause(0.48)
+        show rom surprised:
+            ypos 0.5
+        show conductor upset_talk
+        y "You can't do that! You can't go back there!"
+        y "Isn't there anything I can do to help? How much is your landlord asking of you?"
+        show conductor upset
+        show edy bother:
+            subpixel True 
+            zrotate -18.0 
+            ease_quart 0.37 zrotate 0.0 
+        with Pause(0.47)
+        show edy bother:
+            zrotate 0.0
+        z "... Nah. The landlord wouldn't let me stay even if I paid it all today. It's a trust system, after all."
+        show edy bother:
+            subpixel True 
+            ypos 0.55
+            easein_quad 0.34 ypos 0.5
+        with Pause(0.44)
+        show edy bother:
+            ypos 0.5
+        z "& you got student loan debt to pay. Don't waste your future on me."
+        show conductor upset_talk
+        show rom sad:
+            subpixel True 
+            zrotate 9.0 
+            bop_time_warp 0.41 zrotate 0.0 
+        with Pause(0.51)
+        show rom sad:
+            zrotate 0.0 
+        y "But I {i}care{/i} for you! You {i}are{/i} worth my future!"
+        menu:
+            y "I..."
+
+            "You can stay with me.":
+                show conductor write_talk
+                with dissolve
+                show rom neutral:
+                    subpixel True 
+                    xpos 0.43 
+                    easein_circ 0.38 xpos 0.39 
+                with Pause(0.48)
+                show rom neutral:
+                    xpos 0.39
+                y "No strings attached! Hang out at my apartment!"
+                y "It's not a two-bedroom, sure, but I think we can make it work."
+                show edy excited
+                show conductor write
+                show stagehand happy paper_talk
+                with dissolve
+                z "... Really?"
+                show edy neutral:
+                    subpixel True 
+                    xpos 0.62 
+                    easein_cubic 0.45 xpos 0.66 
+                with Pause(0.55)
+                show edy neutral:
+                    xpos 0.66
+                z "But I have no money for rent."
+                show stagehand paper
+                show conductor write_talk
+                show rom excited:
+                    subpixel True 
+                    ypos 0.59 
+                    spring3 0.38 ypos 0.5 
+                with Pause(0.48)
+                show rom excited:
+                    ypos 0.5
+                y "No strings attached means no rent, either!"
+                y "Worst comes to worst, I can sleep in a sleeping bag. Eternal sleepover and roommate!"
+                show black
+                hide stagehand
+                hide conductor
+                hide rom
+                hide edy
+                with dissolve
+                z "Hahaha. You're... too generous."
+                hide black
+                show happy eddie 
+                with dissolve
+                z "But I insist. I cannot take for free."
+                z "So... I'll play a song for you."
+                z "The lyrics... ? How wonderful you are."
+
+            "I'll book you a hotel room.":
+                show conductor write_talk
+                with dissolve
+                show rom neutral:
+                    subpixel True 
+                    xpos 0.43 
+                    easein_circ 0.38 xpos 0.39 
+                with Pause(0.48)
+                show rom neutral:
+                    xpos 0.39
+                y "I got enough money to spare to get you somewhere to stay until you can get on your feet."
+                y "Library has free computers, so... you can look for a job online there!"
+                y "And I can visit, too! If, uh, the hotel doesn't mind. Hehe."
+                show edy excited
+                show conductor write
+                show stagehand happy paper_talk
+                with dissolve
+                z "I... thank you, [you]."
+                z "You really are too kind."
+                show edy excited:
+                    subpixel True 
+                    zrotate 0.0 
+                    easein_cubic 0.50 zrotate -9.0 
+                with Pause(0.60)
+                show edy excited:
+                    zrotate -9.0 
+                z "When I get the money... I'll repay you every cent you spent on me. I promise."
+                hide edy 
+                with easeoutright
+                show conductor idle
+                with dissolve
+                show stagehand paper_intro paper_talk
+                s "Although [you] did a good thing, they can't help but feel like the missed the opportunity to do something even more alturistic... & perhaps a little selfish, too."
+
+
+
+
 
         jump ending
 
@@ -966,26 +1367,275 @@ label rom:
         with dissolve
         hide black
         hide rom 
-        hide ance
+        hide gy
         show conductor write
         show stagehand paper_talk
         with dissolve
 
+
         s "This first act certainly has some interesting threads starting."
+        show conductor think_intro think_talk
+        show stagehand paper
+        c "I feel like a secret society might be getting a bit off track for a simple break-up plot."
+        show stagehand smug idle_talk
+        with dissolve
+        s "Haha. Most likely."
+        show stagehand angry_intro angry
+        s "We'll just have to see if [you] can make it through my trials intact."
+        show conductor write_talk
+        with dissolve
+        c "... I have never known you for being particularly nice..."
+
+        show black
+        with dissolve
+        hide black
+        show conductor write_talk
+        show stagehand paper
+        with dissolve
 
         show conductor write_talk
         show stagehand paper
-        c "A street-corner turned into soda cupts, and a chance encounter blossomed into prolonged contact."
+        c "A street-corner turned into soda cups, and a chance encounter blossomed into prolonged contact."
         c "[you] has become quite acquainted with [char2name] after all this time. Their boyfriend is just a footnote in their mind with the help of a new friend."
         show stagehand paper_talk
         show conductor write
-        z "character"
+        show gy neutral at truecenter:
+            xpos 0.62
+        with easeinright
+        z "I have another scavenger hunt for you today."
         show rom neutral at truecenter:
             xpos 0.39
         with easeinleft
         show conductor write_talk
         show stagehand paper
-        y "character"
+        y "Does it bring you joy to watch an adult scour around the city like a rat?"
+
+        show conductor write
+        show stagehand paper_talk
+        s "This single life isn't awful, truthfully. A good friend that brings joy at all times is also a good replacement."
+        s "[you] could even say that they wouldn't mind [char2name] as a partner..."
+        show stagehand smug
+        s "Ahem. But they digress."
+        show stagehand idle
+        with dissolve
+        show conductor write_talk
+        c "But... this light honeymoon phase can't last forever."
+        c "One day, [char2name] comes up to [you], acting a bit out of character."
+        show black
+        with dissolve
+        hide black
+        hide gy
+        with dissolve  
+
+        show gy neutral at truecenter:
+            xpos 0.62
+        with easeinright
+        show stagehand neutral idle_talk
+        show conductor write
+        z "[you], [you]. You've been obedient and successful these past two months. I'd like to applaud you."
+        show conductor write_talk
+        show stagehand idle
+        show rom neutral:
+            subpixel True 
+            zrotate 0.0 
+            easein_quad 0.45 zrotate 9.0 
+        with Pause(0.55)
+        show rom neutral:
+            zrotate 9.0 
+        y "What's up? You usually never concern yourself with stuff like that."
+        show stagehand idle_talk
+        show conductor write
+        show gy excited
+        with dissolve
+        z "We've been watching your progress closely."
+        show rom bother:
+            subpixel True 
+            zrotate 9.0 
+            easein_quad 0.42 zrotate 0.0 
+        with Pause(0.52)
+        show rom bother:
+            zrotate 0.0
+        show conductor write_talk
+        show stagehand idle
+        y "I think we've known each other long enough. You can stop being vague now."
+        show conductor write
+        show stagehand angry_intro angry
+        show gy excited:
+            subpixel True 
+            xpos 0.62 
+            ease_cubic 0.45 xpos 0.58 
+        with Pause(0.55)
+        show gy excited:
+            xpos 0.58
+        z "The secret society. We believe we can help you now... with your boyfriend."
+        show rom sad
+        with dissolve
+        show conductor think_intro think_talk
+        c "[you] can't tell if Godfrey is kidding or not."
+        c "Frankly, it {i}does{/i} tracks with the weird things they've been doing the past two months. And Godfrey's own weirdness."
+        c "But that's beside the point right now."
+        show conductor write_talk
+        with dissolve
+        show rom neutral:
+            subpixel True 
+            ypos 0.59 
+            spring3 0.38 ypos 0.5 
+        with Pause(0.48)
+        show rom neutral:
+            ypos 0.5
+        y "Oh! Don't worry about that. I'm over him now."
+        y "I said we were drifting apart, right? Sometimes that just can't be helped."
+        show rom neutral:
+            subpixel True 
+            zrotate 0.0 
+            ease_quart 0.46 zrotate 9.0 
+        with Pause(0.56)
+        show rom neutral:
+            zrotate 9.0
+        y "Still a shame, though."
+        show stagehand idle_talk
+        with dissolve
+        show conductor write
+        show gy surprised:
+            subpixel True 
+            xpos 0.58
+            ease_cubic 0.45 xpos 0.62 
+        with Pause(0.55)
+        show gy surprised:
+            xpos 0.62
+        z "... Oh. Well."
+        z "I suppose that is good! You are of a healthy mind and self-esteem!"
+        show gy surprised:
+            subpixel True 
+            zrotate 0.0 
+            easein_quad 0.40 zrotate -9.0 
+        with Pause(0.50)
+        show gy surprised:
+            zrotate -9.0 
+        s "Godfrey ponders for a moment. They had not considered the possibility [you] wouldn't hold a grudge."
+        show gy sad:
+            subpixel True 
+            zrotate -9.0 
+            easein_quad 0.40 zrotate 0.0
+        with Pause(0.50)
+        show gy sad:
+            zrotate 0.0
+        z "I'm afraid I have nothing to offer you, then."
+        show stagehand idle
+        show conductor think_intro think_talk
+        show rom excited:
+            subpixel True 
+            zrotate 9.0 
+            ease_quart 0.46 zrotate 0.0 
+        with Pause(0.56)
+        show rom excited:
+            zrotate 0.0
+        y "Not even an invitation to the secret society? :("
+        show conductor think
+        show stagehand smug pointer_intro pointer_talk
+        show gy sad:
+            subpixel True 
+            ypos 0.5 
+            easein_cubic 0.44 ypos 0.55 
+        with Pause(0.54)
+        show gy sad:
+            ypos 0.55 
+        z "Hahaha. Don't look at me like that."
+        show gy sad:
+            subpixel True 
+            ypos 0.55
+            easein_cubic 0.44 ypos 0.5
+        with Pause(0.54)
+        show gy sad:
+            ypos 0.5
+        z "... {w=1} The plan was to do you a favor so you'd be indebted to join."
+        z "But if you're willing, such precautions are unnecessary."
+        show stagehand neutral pointer
+        show conductor think_talk
+        show rom sad
+        with dissolve
+        y "Relationships... aren't transactions, I think."
+        y "Sure, it was rude that my boyfriend left me without a thorough explanation..."
+        show rom neutral
+        with dissolve
+        y "But technically, he doesn't have to."
+        y "It's not math or music notes. {w=1}It's just a thing."
+        show conductor think
+        show stagehand pointer_talk
+        show gy bother
+        with dissolve
+        z "..."
+        show gy surprised
+        with dissolve
+        z "If that is the way you see it."
+        z "This... relationship... still feels a bit unequal, however. I ought to provide you with {i}something{/i}."
+        
+        menu:
+            z "Do you wish for anything? As a... friend."
+
+            "Can I see what you look like?":
+                show gy bother
+                with dissolve
+                z "What I look like? What is wrong with my current appearance?"
+                show rom bother
+                with dissolve
+                show stagehand pointer
+                show conductor think_talk
+                y "I don't think I've ever seen what you look like {i}under{/i} that hood."
+                show black
+                with dissolve
+                z "Are you sure you can handle my grace?"
+                y "You cannot be that important."
+                hide stagehand
+                hide black
+                hide conductor
+                hide rom
+                hide gy
+                show happy godfrey
+                with fade
+                z "Oh, but I am. Do not be fooled, mortal."
+                y "Oh man... {i}What the heck are you?{/i}"
+                z "I am the God of {color=#00ffdd}Fright and Dark.{/color}"
+                z "Are you pleased with yourself? {i}Are your atoms crumbling?{/i}"
+                y "... This is way better than a boyfriend, you know?!"
+                z "Ah... uhm... I suppose so."
+                z "Hehehehe."
+
+
+            "Coffee please!":
+                show gy bother
+                with dissolve
+                z "I have spent too many funds fueling your coffee addiction."
+                show conductor idle_talk
+                show stagehand pointer
+                with dissolve
+                show rom neutral:
+                    subpixel True 
+                    zrotate 0.0 
+                    ease_quart 0.46 zrotate 9.0 
+                with Pause(0.56)
+                show rom neutral:
+                    zrotate 9.0
+                y "Well, if you didn't send me on expeditions at 3 am, maybe this is wouldn't be an issue."
+                show stagehand smug pointer_talk
+                show conductor idle
+                z "Ah, so the fault is on me, now?"
+                hide rom
+                with easeoutright
+                show conductor idle_talk
+                y "Well... I'd probably blame high school first and foremost, then college, {i}then{/i} your secret society."
+                show conductor idle
+                show stagehand idle_talk
+                with dissolve
+                hide gy 
+                with easeoutright
+                z "I see. We will abolish the school system, then."
+                show conductor idle_talk
+                show stagehand idle
+                y "... That's not gonna retroactively disable my caffeine addiction, though?"
+                show conductor idle
+                show stagehand paper_intro paper_talk
+                s "Although the coffee was good, it feels like [you] missed an opportunity for a better deal..."
 
         jump ending
 
@@ -1252,23 +1902,239 @@ label rom:
         with dissolve
 
         s "This first act certainly has some interesting threads starting."
-
         show conductor write_talk
         show stagehand paper
-        c "A street-corner turned into soda cupts, and a chance encounter blossomed into prolonged contact."
+        c "... Why \"John Comedy?\""
+        show stagehand happy paper_talk
+        show conductor write
+        s "This kind of character simply seemed like one you'd find humor in."
+        show stagehand neutral paper
+        show conductor think_intro think_talk
+        c "Haha, I'm that much of a clown, huh?"
+        c "Well... thanks for thinking of me."
+        c "... But you can think of yourself next time, too."
+
+        show black
+        with dissolve
+        hide black
+        show conductor write_talk
+        show stagehand paper
+        with dissolve
+
+        c "A street-corner turned into soda cups, and a chance encounter blossomed into prolonged contact."
         c "[you] has become quite acquainted with [char2name] after all this time. Their boyfriend is just a footnote in their mind with the help of a new friend."
         show stagehand paper_talk
         show conductor write
         show edic neutral at truecenter:
             xpos 0.62
         with easeinright
-        z "character"
+        z "I brought some souvenirs from England. Here, a feather from the Queen's swans."
         show rom neutral at truecenter:
             xpos 0.39
         with easeinleft
         show conductor write_talk
         show stagehand paper
-        y "character"
+        y "Wow! Now I can pretend to be a classical composer and hand-write illegible music scores!"
+
+        show conductor write
+        show stagehand paper_talk
+        s "This single life isn't awful, truthfully. A good friend that brings joy at all times is also a good replacement."
+        s "[you] could even say that they wouldn't mind [char2name] as a partner..."
+        show stagehand smug
+        s "Ahem. But they digress."
+        show stagehand idle
+        with dissolve
+        show conductor write_talk
+        c "But... this light honeymoon phase can't last forever."
+        c "One day, [char2name] comes up to [you], acting a bit out of character."
+        show black
+        with dissolve
+        hide black
+        hide edic
+        with dissolve
+
+
+        show stagehand neutral idle_talk
+        show conductor write
+        show edic neutral at truecenter:
+            xpos 0.62
+        with easeinright
+        z "Good morning, [you]. The middle of summer approaches."
+        show conductor write_talk
+        show stagehand idle
+        show rom neutral:
+            subpixel True 
+            zrotate 0.0 
+            easein_quad 0.45 zrotate 9.0 
+        with Pause(0.55)
+        show rom neutral:
+            zrotate 9.0 
+        y "What's up? You usually never concern yourself with stuff like that."
+        show conductor write
+        show stagehand pointer_intro pointer_talk
+        show edic neutral:
+            subpixel True 
+            xpos 0.62 
+            ease_quart 0.49 xpos 0.58 
+        with Pause(0.59)
+        show edic neutral:
+            xpos 0.58
+        z "That is where you are wrong."
+        z "During this time, I go up to the mountains to escape the heat."
+        z "There is a large cabin near a lake that I rent. The owners always complain about the fact I bring no one to the cabin despite the fact it is multi-bedroom."
+        z "But I am a repeat customer, and I have no one to bring, so they do not do anything about it."
+        show edic bother:
+            subpixel True 
+            xpos 0.58
+            ease_quart 0.49 xpos 0.62
+        with Pause(0.59)
+        show edic bother:
+            xpos 0.62
+        z "However, I catch an exorbitant amount of fish that I can never finish eating."
+        show stagehand pointer
+        show conductor write_talk
+        show rom bother:
+            subpixel True 
+            zrotate 9.0
+            easein_quad 0.45 zrotate 0.0 
+        with Pause(0.55)
+        show rom bother:
+            zrotate 0.0
+        y "Can't you just... release the fish?"
+        show stagehand angry_intro angry
+        show conductor write 
+        show edic bother
+        z "You see, marmalade is actually really good with fish. So I always toss the marmalade with the fish so I don't have extra marmalade."
+        show edic excited
+        with dissolve
+        z "The owners complain about that, too."
+        show conductor upset_intro upset
+        show rom bother:
+            subpixel True 
+            xpos 0.39 
+            ease_back 0.46 xpos 0.36 
+        with Pause(0.56)
+        show rom bother:
+            xpos 0.36
+        y "..."
+        show stagehand idle_talk
+        with dissolve
+        show edic neutral:
+            subpixel True 
+            xpos 0.62 
+            ease_quart 0.49 xpos 0.58 
+        with Pause(0.59)
+        show edic neutral:
+            xpos 0.58
+        z "Anyway, I believe the solution is to bring along someone to eat fish with me."
+        z "So I am offering this opportunity to you. Don't worry, you can fish too if you want. Post it on your dating profile."
+
+        show conductor think_talk
+        show stagehand idle
+        with dissolve
+        show rom bother
+        c "[you] wouldn't really consider this a date considering that John just said to put fish on their dating profile (which they don't have, by the way.)"
+        show rom excited:
+            subpixel True 
+            xpos 0.36
+            ease_quart 0.49 xpos 0.39
+        with Pause(0.59)
+        show rom excited:
+            xpos 0.39
+        c "But John is offering {i}them{/i} to go to a cabin in the mountains-- his cabin that he has brought no one else before! How romantic is that?!"
+        show rom bother
+        with dissolve
+        c "At the same time, it's a {i}secluded cabin in the mountains.{/i} That's also a {i}common murder plot.{/i}"
+        menu: 
+            c "Can a marmalade enjoyer even be trusted... ?"
+
+            "Go fish!":
+                show rom neutral
+                show conductor write_talk
+                with dissolve
+                y "Hehe... sure!"
+                y "Although, I don't know how to fish."
+                show conductor write
+                show stagehand idle_talk
+                show edic excited:
+                    subpixel True 
+                    ypos 0.59 
+                    spring3 0.38 ypos 0.5 
+                with Pause(0.48)
+                show edic excited:
+                    ypos 0.5 
+                z "It is easy. I hope you can stomach worms, however."
+                show rom sad:
+                    subpixel True 
+                    xpos 0.39 
+                    ease_back 0.46 xpos 0.36 
+                with Pause(0.56)
+                show rom sad:
+                    xpos 0.36
+                show conductor upset_intro upset_talk
+                y "{color=#f260ff}I'm eating worms????{/color}"
+                show black
+                hide conductor
+                hide stagehand
+                hide edic
+                hide rom
+                with dissolve
+                c "[you] takes a week trip to the Fuca Mountains with John, a well-earned cherry on top of their relationship."
+                y "Wow! The water is so clear!"
+                hide black
+                show happy john
+                with dissolve
+                z "That is what mountain springs create. Frankly, I'm surprised such abundant fish exist here."
+                z "Usually, mountain lakes don't have much dissolved oxygen. I'm a psychology major though. Don't know anything about that."
+                y "Waah!! Why are you holding the fish like that?"
+                z "This is how I gauge if a fish is good for eating."
+                y "... You are very strange, don't you know?"
+                z "Ha. You don't seem to mind, though!"
+
+            "no thank you british-australian(?) man":
+                y "Sorry, I... don't think I can go."
+                y "I'm the, uh, opposite of a pescatarian."
+                show stagehand idle_talk
+                show conductor think
+                show edic surprised:
+                    subpixel True 
+                    zrotate 0.0 
+                    spring3 0.38 zrotate 9.0 
+                with Pause(0.48)
+                show edic surprised:
+                    zrotate 9.0
+                z "... Swear I saw you eating sushi the other day."
+                show rom neutral:
+                    subpixel True 
+                    zrotate 0.0 
+                    spring3 0.38 zrotate -9.0 
+                with Pause(0.48)
+                show rom neutral:
+                    zrotate -9.0
+                show stagehand idle
+                show conductor think_talk
+                y "Oh, it's not about taste or anything. I just hate dealing with bones."
+                show rom neutral:
+                    subpixel True 
+                    zrotate -9.0 
+                    ease2 0.45 zrotate 0.0 
+                with Pause(0.55)
+                show rom neutral:
+                    zrotate 0.0 
+                y "So if you can bring a whole fish back, I guess I could find someone to debone it for me."
+                show edic neutral:
+                    zrotate 0.0
+                with dissolve
+                show conductor think
+                show stagehand idle_talk
+                z "Ah. I understand. I will try my best to remember this."
+                hide edic
+                with easeoutleft
+                z "Farewell, then."
+                show stagehand pointer_intro pointer_talk
+                s "John, the white man, takes his leave to his natural habitat."
+                show stagehand smug
+                s "Somehow, it feels like something went wrong."
 
         jump ending
   
@@ -1398,30 +2264,132 @@ label com:
     return
 
 label ending:
-    show conductor happy write
+    show black
+    with dissolve
+    hide black
+    hide happy
+    show conductor write_talk at left
+    show stagehand paper at right
+    with dissolve
     menu:
-        c "There's only one way for this story to end."
+        c "That's the second act done. And now, there is only one way for this story to end."
 
         "Bright rays shine down on morning bells...":
+            show black
+            with dissolve
             c "Adults and children alike cheer for this white day."
+            #if char1 == 1:
+                #show bellsChar1 rom
+            #for when other char1's exist
+            
+            #if char2 == 1:
+                #show bellsChar2 ai 
+            #elif char2 == 2:
+                #show bellsChar2 eddie 
+            #elif char2 == 3:
+                #show bellsChar2 godfrey 
+            #else: 
+                #show bellsChar2 john
+
+            if char1 == 1:
+                y "Wow... To think breaking up with my college boyfriend would lead to my marriage..."
+
+            s "Years into the future, the intertwined souls become wedded under a glorious arch."
+
+            if char2 == 1:
+                c "Grandparents weep at their grandchild's happiest day."
+                z "Mom, dad... are you proud of me? I live on."
+            elif char2 == 2:
+                c "The venue fills with beautiful music from fellow musicians and graduates."
+                z "Life... hasn't ended yet. There is still another repeat in the measure."
+            elif char2 == 3:
+                s "Cult members chant blessings for the couple."
+                z "... I'm not sure how I ended up on this path. But... I don't think it's so bad." 
+            else: 
+                s "John does a peace sign at the altar."
+                z "Humans are not solitary animals, despite the existence of introverts and the like. we cannot have peace without companionship."
+
+            c "It's... a wonderous day."
+
 
         "Rolling clouds rain down city walls and gluttinous gutters...":
-            pass
+            scene black
+            with dissolve
+            c "As I said, nothing can last forever."
+            #if char1 == 1:
+                #show rainRom
+            #for when other char1's exist
+            
+            #if char2 == 1:
+                #show rainAi
+            #elif char2 == 2:
+                #show rainEddie
+            #elif char2 == 3:
+                #show rainGod 
+            #else: 
+                #show rainJohn
+  
+            with dissolve
 
-        "Alleys echo the same white noise they always did...":
-            pass
+            if char1 == 1:
+                y "I left two hearts behind when I moved out of the city for graduation. [char2name]'s... and the part of mine that yearns for them."
+            #for when other char1's exist
+            
+            if char2 == 1:
+                c "Both [you] and Ai lament what could have been."
+                z "I hope [you] comes to visit sometime. So I can... amend my missed chance."
+            elif char2 == 2:
+                s "Though [you] may live on, something different is to be said for Eddie."
+                z "It's all over. There is nothing and nobody here for me. Should I just... ?"
+            elif char2 == 3:
+                s "But still... it feels like someone is still watching [you]."
+                z "You thought you could leave? Hahaha... it was naive to get so close to me, then."
+            else: 
+                c "Lives drift apart, and people move on in the end. It is an inevitability."
+                z "That student... I hope they are alright. Psychologists can only hope for the best once a patient leaves their care."
+            
+            c "Would there still be a opportunity, if [you] returned to their past?"
+
+        #"Alleys echo the same white noise they always did...":
+            #pass
 
         "The earth rumbles with magma and tension...":
-            pass
+            scene black
+            with dissolve
+
+            if char1 == 1:
+                y "Eh?! What is going on?"
+            #for when other char1's exist
+            
+            if char2 == 1:
+                c "Ai jumps into your arm, quivering but enjoying the warmth of your skin. Actually, it seems everything is warm."
+                z "[you]! Hold me!!"
+            elif char2 == 2:
+                c "Eddie's face turns stone cold and solid as the ceiling crumbles around them."
+                z "... Catharsis is here." 
+            elif char2 == 3:
+                s "Countless figures in cloaks emerge from the darkness."
+                z "The almighty day is here! Rejoice! Rejoice!"
+            else: 
+                s "John scrambles to secure the cabinets."
+                z "My marmalade... they can't take you!"
+
+
+            show bg hill
+            show paper
+            show earth
+            with dissolve
+            c "In the wake of human joy and lamenting... the Earth has exploded."
 
     scene black
     with dissolve
     hide black
     show bg hill
-    show paper
     show conductor write at left
     show stagehand paper_talk at right
     with dissolve
+    hide paper
+    with easeoutbottom
         
     s "What meaning does a piece of writing have -- to a reader or a writer -- if it is simply \"work?\""
     s "Art is a manifestation of flaws. Perhaps there are \"more flawed\" ways to execute a certain medium, but there are no ways to eliminate flaws."
@@ -1460,6 +2428,8 @@ label ending:
     s "Awaken, and create all the stories you like-- unburdened."
 
     scene black
+    stop music
+    play sound crumple
     "???" "..."
     "???" "I guess this light-hearted reprieve ended up meaningful after all."
     "End: A Dream within a Dream."
