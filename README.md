@@ -37,5 +37,8 @@ Short Ren'Py visual novel where "Conductor" and "Stagehand" make a short story t
 <br> https://musopen.org/music/4415-waltzes-op-69/
 - All sound effects by ZapSplat
 
-- also idk where to put this but arial nova bold is the font. special thanks tally hall the band
+<h3> Misc </h3>
+- Font: Arial Nova Bold. thank you tally hall the band
+- Paper image by Артем Дворецкий on Pexels (cropped)
+<br> https://www.pexels.com/photo/a-scrunched-lined-paper-sheet-20818871/
   
