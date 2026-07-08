@@ -1,6 +1,7 @@
 <h1> writing & whatnot </h1>
 
 Short Ren'Py visual novel where "Conductor" and "Stagehand" make a short story together to make something meaningful.
+Currently a demo version; Only one protagonist is implemented.
 
 <img width="1920" height="1080" alt="cg far1" src="https://github.com/user-attachments/assets/2d68ddca-ca85-431b-ae94-98b617c9c430" />
 
