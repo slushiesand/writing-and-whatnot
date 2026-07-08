@@ -38,6 +38,7 @@ Short Ren'Py visual novel where "Conductor" and "Stagehand" make a short story t
 - All sound effects by ZapSplat
 
 <h3> Misc </h3>
+
 - Font: Arial Nova Bold. thank you tally hall the band
 - Paper image by Артем Дворецкий on Pexels (cropped)
 <br> https://www.pexels.com/photo/a-scrunched-lined-paper-sheet-20818871/
